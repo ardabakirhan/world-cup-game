@@ -1,0 +1,2402 @@
+[
+  {
+    "team": "CZE",
+    "name": "Vladimír Darida",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1990-08-08",
+    "club": "Hradec Králové"
+  },
+  {
+    "team": "CZE",
+    "name": "Alexandr Sojka",
+    "number": 24,
+    "position": "MF",
+    "birthDate": "2003-04-02",
+    "club": "Viktoria Plzeň"
+  },
+  {
+    "team": "CZE",
+    "name": "Hugo Sochůrek",
+    "number": 25,
+    "position": "MF",
+    "birthDate": "2008-06-07",
+    "club": "Sparta Prague"
+  },
+  {
+    "team": "KOR",
+    "name": "Kim Seung-gyu",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1990-09-30",
+    "club": "FC Tokyo"
+  },
+  {
+    "team": "KOR",
+    "name": "Kim Tae-hyeon",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "2000-09-17",
+    "club": "Kashima Antlers"
+  },
+  {
+    "team": "KOR",
+    "name": "Cho Wi-je",
+    "number": 14,
+    "position": "DF",
+    "birthDate": "2001-08-25",
+    "club": "Jeonbuk Hyundai Motors"
+  },
+  {
+    "team": "KOR",
+    "name": "Seol Young-woo",
+    "number": 22,
+    "position": "DF",
+    "birthDate": "1998-12-05",
+    "club": "Red Star Belgrade"
+  },
+  {
+    "team": "MEX",
+    "name": "Luis Romo",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1995-06-05",
+    "club": "Guadalajara"
+  },
+  {
+    "team": "MEX",
+    "name": "Álvaro Fidalgo",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1997-04-09",
+    "club": "Real Betis"
+  },
+  {
+    "team": "MEX",
+    "name": "Carlos Acevedo",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1996-04-19",
+    "club": "Santos Laguna"
+  },
+  {
+    "team": "MEX",
+    "name": "Guillermo Ochoa",
+    "number": 13,
+    "position": "GK",
+    "birthDate": "1985-07-13",
+    "club": "AEL Limassol"
+  },
+  {
+    "team": "MEX",
+    "name": "Armando González",
+    "number": 14,
+    "position": "FW",
+    "birthDate": "2003-04-20",
+    "club": "Guadalajara"
+  },
+  {
+    "team": "MEX",
+    "name": "Israel Reyes",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "2000-05-23",
+    "club": "América"
+  },
+  {
+    "team": "MEX",
+    "name": "Gilberto Mora",
+    "number": 19,
+    "position": "MF",
+    "birthDate": "2008-10-14",
+    "club": "Tijuana"
+  },
+  {
+    "team": "MEX",
+    "name": "Guillermo Martínez",
+    "number": 22,
+    "position": "FW",
+    "birthDate": "1995-03-15",
+    "club": "Pumas"
+  },
+  {
+    "team": "MEX",
+    "name": "Luis Chávez",
+    "number": 24,
+    "position": "MF",
+    "birthDate": "1996-01-15",
+    "club": "Dynamo Moscow"
+  },
+  {
+    "team": "RSA",
+    "name": "Ronwen Williams",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1992-01-21",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Thabang Matuludi",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1999-01-14",
+    "club": "Polokwane City"
+  },
+  {
+    "team": "RSA",
+    "name": "Khulumani Ndamane",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "2004-02-05",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Teboho Mokoena",
+    "number": 4,
+    "position": "MF",
+    "birthDate": "1997-01-24",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Thalente Mbatha",
+    "number": 5,
+    "position": "MF",
+    "birthDate": "2000-03-06",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Aubrey Modiba",
+    "number": 6,
+    "position": "DF",
+    "birthDate": "1995-07-22",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Oswin Appollis",
+    "number": 7,
+    "position": "FW",
+    "birthDate": "2001-08-25",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Tshepang Moremi",
+    "number": 8,
+    "position": "FW",
+    "birthDate": "2000-10-02",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Relebohile Mofokeng",
+    "number": 10,
+    "position": "FW",
+    "birthDate": "2004-10-23",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Themba Zwane",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "1989-08-03",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Thapelo Maseko",
+    "number": 12,
+    "position": "FW",
+    "birthDate": "2003-11-11",
+    "club": "AEL Limassol"
+  },
+  {
+    "team": "RSA",
+    "name": "Mbekezeli Mbokazi",
+    "number": 14,
+    "position": "DF",
+    "birthDate": "2005-09-19",
+    "club": "Chicago Fire FC"
+  },
+  {
+    "team": "RSA",
+    "name": "Iqraam Rayners",
+    "number": 15,
+    "position": "FW",
+    "birthDate": "1995-12-19",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Sipho Chaine",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1996-12-14",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Evidence Makgopa",
+    "number": 17,
+    "position": "FW",
+    "birthDate": "2000-06-05",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Nkosinathi Sibisi",
+    "number": 19,
+    "position": "DF",
+    "birthDate": "1995-09-22",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Khuliso Mudau",
+    "number": 20,
+    "position": "DF",
+    "birthDate": "1995-04-26",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Ricardo Goss",
+    "number": 22,
+    "position": "GK",
+    "birthDate": "1994-04-02",
+    "club": "Siwelele"
+  },
+  {
+    "team": "RSA",
+    "name": "Jayden Adams",
+    "number": 23,
+    "position": "MF",
+    "birthDate": "2001-05-05",
+    "club": "Mamelodi Sundowns"
+  },
+  {
+    "team": "RSA",
+    "name": "Kamogelo Sebelebele",
+    "number": 25,
+    "position": "FW",
+    "birthDate": "2002-07-21",
+    "club": "Orlando Pirates"
+  },
+  {
+    "team": "RSA",
+    "name": "Bradley Cross",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "2001-01-30",
+    "club": "Kaizer Chiefs"
+  },
+  {
+    "team": "BIH",
+    "name": "Mladen Jurkas",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "2007-10-07",
+    "club": "Borac Banja Luka"
+  },
+  {
+    "team": "BIH",
+    "name": "Ivan Bašić",
+    "number": 13,
+    "position": "MF",
+    "birthDate": "2002-04-30",
+    "club": "Astana"
+  },
+  {
+    "team": "BIH",
+    "name": "Ivan Šunjić",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1996-10-09",
+    "club": "Pafos"
+  },
+  {
+    "team": "BIH",
+    "name": "Stjepan Radeljić",
+    "number": 21,
+    "position": "DF",
+    "birthDate": "1997-09-05",
+    "club": "Rijeka"
+  },
+  {
+    "team": "BIH",
+    "name": "Martin Zlomislić",
+    "number": 22,
+    "position": "GK",
+    "birthDate": "1998-08-16",
+    "club": "Rijeka"
+  },
+  {
+    "team": "BIH",
+    "name": "Ermin Mahmić",
+    "number": 26,
+    "position": "MF",
+    "birthDate": "2005-03-14",
+    "club": "Slovan Liberec"
+  },
+  {
+    "team": "QAT",
+    "name": "Mahmud Abunada",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "2000-02-05",
+    "club": "Al-Rayyan"
+  },
+  {
+    "team": "QAT",
+    "name": "Issa Laye",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1997-12-22",
+    "club": "Al-Arabi"
+  },
+  {
+    "team": "QAT",
+    "name": "Ahmed Alaaeldin",
+    "number": 7,
+    "position": "FW",
+    "birthDate": "1993-01-31",
+    "club": "Al-Rayyan"
+  },
+  {
+    "team": "QAT",
+    "name": "Ayoub Al-Oui",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "2005-03-11",
+    "club": "Al-Gharafa"
+  },
+  {
+    "team": "QAT",
+    "name": "Sultan Al-Brake",
+    "number": 18,
+    "position": "DF",
+    "birthDate": "1996-04-07",
+    "club": "Al-Duhail"
+  },
+  {
+    "team": "QAT",
+    "name": "Tahsin Jamshid",
+    "number": 24,
+    "position": "FW",
+    "birthDate": "2006-06-16",
+    "club": "Al-Duhail"
+  },
+  {
+    "team": "QAT",
+    "name": "Al-Hashmi Al-Hussain",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2003-08-15",
+    "club": "Al-Arabi"
+  },
+  {
+    "team": "QAT",
+    "name": "Mohamed Manai",
+    "number": 26,
+    "position": "FW",
+    "birthDate": "2002-10-25",
+    "club": "Al-Shamal"
+  },
+  {
+    "team": "BRA",
+    "name": "Alex Sandro",
+    "number": 6,
+    "position": "DF",
+    "birthDate": "1991-01-26",
+    "club": "Flamengo"
+  },
+  {
+    "team": "BRA",
+    "name": "Neymar",
+    "number": 10,
+    "position": "FW",
+    "birthDate": "1992-02-05",
+    "club": "Santos"
+  },
+  {
+    "team": "BRA",
+    "name": "Weverton",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1987-12-13",
+    "club": "Grêmio"
+  },
+  {
+    "team": "BRA",
+    "name": "Danilo Luiz",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1991-07-15",
+    "club": "Flamengo"
+  },
+  {
+    "team": "BRA",
+    "name": "Léo Pereira",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "1996-01-31",
+    "club": "Flamengo"
+  },
+  {
+    "team": "BRA",
+    "name": "Douglas Santos",
+    "number": 16,
+    "position": "DF",
+    "birthDate": "1994-03-22",
+    "club": "Zenit Saint Petersburg"
+  },
+  {
+    "team": "BRA",
+    "name": "Danilo Santos",
+    "number": 18,
+    "position": "MF",
+    "birthDate": "2001-04-29",
+    "club": "Botafogo"
+  },
+  {
+    "team": "BRA",
+    "name": "Luiz Henrique",
+    "number": 21,
+    "position": "FW",
+    "birthDate": "2001-01-02",
+    "club": "Zenit Saint Petersburg"
+  },
+  {
+    "team": "BRA",
+    "name": "Rayan",
+    "number": 26,
+    "position": "FW",
+    "birthDate": "2006-08-03",
+    "club": "Bournemouth"
+  },
+  {
+    "team": "HAI",
+    "name": "Keeto Thermoncy",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "2006-03-29",
+    "club": "Young Boys"
+  },
+  {
+    "team": "HAI",
+    "name": "Carl Sainté",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "2002-08-09",
+    "club": "El Paso Locomotive FC"
+  },
+  {
+    "team": "HAI",
+    "name": "Duckens Nazon",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "1994-04-07",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "HAI",
+    "name": "Alexandre Pierre",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "2001-02-25",
+    "club": "Sochaux"
+  },
+  {
+    "team": "HAI",
+    "name": "Duke Lacroix",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1993-10-14",
+    "club": "Colorado Springs Switchbacks FC"
+  },
+  {
+    "team": "HAI",
+    "name": "Leverton Pierre",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1998-03-09",
+    "club": "Vizela"
+  },
+  {
+    "team": "HAI",
+    "name": "Ruben Providence",
+    "number": 15,
+    "position": "FW",
+    "birthDate": "2001-07-07",
+    "club": "Almere City"
+  },
+  {
+    "team": "HAI",
+    "name": "Yassin Fortuné",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "1999-01-30",
+    "club": "Vizela"
+  },
+  {
+    "team": "HAI",
+    "name": "Josué Duverger",
+    "number": 23,
+    "position": "GK",
+    "birthDate": "2000-04-27",
+    "club": "Cosmos Koblenz"
+  },
+  {
+    "team": "HAI",
+    "name": "Dominique Simon",
+    "number": 25,
+    "position": "MF",
+    "birthDate": "2000-07-29",
+    "club": "Tatran Prešov"
+  },
+  {
+    "team": "HAI",
+    "name": "Woodensky Pierre",
+    "number": 26,
+    "position": "MF",
+    "birthDate": "2004-12-30",
+    "club": "Violette"
+  },
+  {
+    "team": "MAR",
+    "name": "Youssef Belammari",
+    "number": 19,
+    "position": "DF",
+    "birthDate": "1998-09-20",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "SCO",
+    "name": "Tyler Fletcher",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "2007-03-19",
+    "club": "Manchester United"
+  },
+  {
+    "team": "AUS",
+    "name": "Miloš Degenek",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1994-04-28",
+    "club": "APOEL"
+  },
+  {
+    "team": "AUS",
+    "name": "Jason Geria",
+    "number": 6,
+    "position": "DF",
+    "birthDate": "1993-05-10",
+    "club": "Albirex Niigata"
+  },
+  {
+    "team": "PAR",
+    "name": "Juan José Cáceres",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2000-06-01",
+    "club": "Dynamo Moscow"
+  },
+  {
+    "team": "PAR",
+    "name": "Fabián Balbuena",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1991-08-23",
+    "club": "Grêmio"
+  },
+  {
+    "team": "PAR",
+    "name": "Júnior Alonso",
+    "number": 6,
+    "position": "DF",
+    "birthDate": "1993-02-09",
+    "club": "Atlético Mineiro"
+  },
+  {
+    "team": "PAR",
+    "name": "Ramón Sosa",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1999-08-31",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "PAR",
+    "name": "Maurício",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "2001-06-22",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "PAR",
+    "name": "Gustavo Gómez",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "1993-05-06",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "PAR",
+    "name": "Damián Bobadilla",
+    "number": 16,
+    "position": "MF",
+    "birthDate": "2001-07-11",
+    "club": "São Paulo"
+  },
+  {
+    "team": "PAR",
+    "name": "Gustavo Caballero",
+    "number": 24,
+    "position": "MF",
+    "birthDate": "2001-09-21",
+    "club": "Portsmouth"
+  },
+  {
+    "team": "PAR",
+    "name": "Isidro Pitta",
+    "number": 25,
+    "position": "FW",
+    "birthDate": "1999-08-14",
+    "club": "Red Bull Bragantino"
+  },
+  {
+    "team": "CIV",
+    "name": "Jean Michaël Seri",
+    "number": 4,
+    "position": "MF",
+    "birthDate": "1991-07-19",
+    "club": "Maribor"
+  },
+  {
+    "team": "CUW",
+    "name": "Eloy Room",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1989-02-06",
+    "club": "Miami FC"
+  },
+  {
+    "team": "CUW",
+    "name": "Juriën Gaari",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1993-12-23",
+    "club": "Abha"
+  },
+  {
+    "team": "CUW",
+    "name": "Roshon van Eijma",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1998-06-09",
+    "club": "RKC Waalwijk"
+  },
+  {
+    "team": "CUW",
+    "name": "Godfried Roemeratoe",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "1999-08-19",
+    "club": "RKC Waalwijk"
+  },
+  {
+    "team": "CUW",
+    "name": "Jürgen Locadia",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "1993-11-07",
+    "club": "Miami FC"
+  },
+  {
+    "team": "CUW",
+    "name": "Leandro Bacuna",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1991-08-21",
+    "club": "Iğdır"
+  },
+  {
+    "team": "CUW",
+    "name": "Jeremy Antonisse",
+    "number": 11,
+    "position": "FW",
+    "birthDate": "2002-03-29",
+    "club": "Kifisia"
+  },
+  {
+    "team": "CUW",
+    "name": "Kenji Gorré",
+    "number": 14,
+    "position": "FW",
+    "birthDate": "1994-09-29",
+    "club": "Maccabi Haifa"
+  },
+  {
+    "team": "CUW",
+    "name": "Jearl Margaritha",
+    "number": 16,
+    "position": "FW",
+    "birthDate": "2000-04-10",
+    "club": "Beveren"
+  },
+  {
+    "team": "CUW",
+    "name": "Gervane Kastaneer",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "1996-06-09",
+    "club": "Terengganu"
+  },
+  {
+    "team": "CUW",
+    "name": "Joshua Brenet",
+    "number": 20,
+    "position": "DF",
+    "birthDate": "1994-03-20",
+    "club": "Kayserispor"
+  },
+  {
+    "team": "CUW",
+    "name": "Kevin Felida",
+    "number": 22,
+    "position": "MF",
+    "birthDate": "1999-11-11",
+    "club": "Den Bosch"
+  },
+  {
+    "team": "CUW",
+    "name": "Trevor Doornbusch",
+    "number": 26,
+    "position": "GK",
+    "birthDate": "1999-07-06",
+    "club": "VVV-Venlo"
+  },
+  {
+    "team": "ECU",
+    "name": "Félix Torres",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1997-01-11",
+    "club": "Internacional"
+  },
+  {
+    "team": "ECU",
+    "name": "Moisés Ramírez",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "2000-09-09",
+    "club": "Kifisia"
+  },
+  {
+    "team": "ECU",
+    "name": "Enner Valencia",
+    "number": 13,
+    "position": "FW",
+    "birthDate": "1989-11-04",
+    "club": "Pachuca"
+  },
+  {
+    "team": "ECU",
+    "name": "Pedro Vite",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "2002-03-09",
+    "club": "UNAM"
+  },
+  {
+    "team": "ECU",
+    "name": "Gonzalo Plata",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "2000-11-01",
+    "club": "Flamengo"
+  },
+  {
+    "team": "ECU",
+    "name": "Alan Franco",
+    "number": 21,
+    "position": "MF",
+    "birthDate": "1998-08-21",
+    "club": "Atlético Mineiro"
+  },
+  {
+    "team": "ECU",
+    "name": "Jackson Porozo",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2000-08-04",
+    "club": "Tijuana"
+  },
+  {
+    "team": "JPN",
+    "name": "Yūto Nagatomo",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1986-09-12",
+    "club": "FC Tokyo"
+  },
+  {
+    "team": "JPN",
+    "name": "Keisuke Ōsako",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1999-07-28",
+    "club": "Sanfrecce Hiroshima"
+  },
+  {
+    "team": "JPN",
+    "name": "Takehiro Tomiyasu",
+    "number": 22,
+    "position": "DF",
+    "birthDate": "1998-11-05",
+    "club": "Ajax"
+  },
+  {
+    "team": "JPN",
+    "name": "Tomoki Hayakawa",
+    "number": 23,
+    "position": "GK",
+    "birthDate": "1999-03-03",
+    "club": "Kashima Antlers"
+  },
+  {
+    "team": "TUN",
+    "name": "Mouhib Chamakh",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "2001-08-25",
+    "club": "Club Africain"
+  },
+  {
+    "team": "TUN",
+    "name": "Omar Rekik",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2001-12-20",
+    "club": "Maribor"
+  },
+  {
+    "team": "TUN",
+    "name": "Hazem Mastouri",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "1997-06-18",
+    "club": "Dynamo Makhachkala"
+  },
+  {
+    "team": "TUN",
+    "name": "Khalil Ayari",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "2005-02-02",
+    "club": "Paris Saint-Germain"
+  },
+  {
+    "team": "TUN",
+    "name": "Aymen Dahmen",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1997-01-28",
+    "club": "CS Sfaxien"
+  },
+  {
+    "team": "TUN",
+    "name": "Rayan Elloumi",
+    "number": 18,
+    "position": "FW",
+    "birthDate": "2007-09-17",
+    "club": "Vancouver Whitecaps FC"
+  },
+  {
+    "team": "TUN",
+    "name": "Firas Chaouat",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "1996-05-08",
+    "club": "Club Africain"
+  },
+  {
+    "team": "TUN",
+    "name": "Mohamed Amine Ben Hamida",
+    "number": 21,
+    "position": "DF",
+    "birthDate": "1995-12-15",
+    "club": "Espérance de Tunis"
+  },
+  {
+    "team": "TUN",
+    "name": "Sabri Ben Hessen",
+    "number": 22,
+    "position": "GK",
+    "birthDate": "1996-06-13",
+    "club": "Étoile du Sahel"
+  },
+  {
+    "team": "TUN",
+    "name": "Raed Chikhaoui",
+    "number": 24,
+    "position": "DF",
+    "birthDate": "2004-06-09",
+    "club": "US Monastir"
+  },
+  {
+    "team": "EGY",
+    "name": "Mohamed El Shenawy",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1988-12-18",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Yasser Ibrahim",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1993-02-10",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Mohamed Hany",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1996-02-02",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Hossam Abdelmaguid",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2001-04-30",
+    "club": "Zamalek"
+  },
+  {
+    "team": "EGY",
+    "name": "Trézéguet",
+    "number": 7,
+    "position": "FW",
+    "birthDate": "1994-10-01",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Emam Ashour",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1998-02-20",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Hamza Abdelkarim",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "2008-01-01",
+    "club": "Barcelona B"
+  },
+  {
+    "team": "EGY",
+    "name": "Mostafa Ziko",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "1997-04-27",
+    "club": "Pyramids"
+  },
+  {
+    "team": "EGY",
+    "name": "Ahmed Fatouh",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1998-03-22",
+    "club": "Zamalek"
+  },
+  {
+    "team": "EGY",
+    "name": "Hamdy Fathy",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1994-09-29",
+    "club": "Al-Wakrah"
+  },
+  {
+    "team": "EGY",
+    "name": "Karim Hafez",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "1996-03-12",
+    "club": "Pyramids"
+  },
+  {
+    "team": "EGY",
+    "name": "El Mahdy Soliman",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1987-06-08",
+    "club": "Zamalek"
+  },
+  {
+    "team": "EGY",
+    "name": "Mohanad Lasheen",
+    "number": 17,
+    "position": "MF",
+    "birthDate": "1996-05-29",
+    "club": "Pyramids"
+  },
+  {
+    "team": "EGY",
+    "name": "Nabil Emad",
+    "number": 18,
+    "position": "MF",
+    "birthDate": "1996-04-06",
+    "club": "Al-Najma"
+  },
+  {
+    "team": "EGY",
+    "name": "Marwan Attia",
+    "number": 19,
+    "position": "MF",
+    "birthDate": "1998-08-01",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Ibrahim Adel",
+    "number": 20,
+    "position": "FW",
+    "birthDate": "2001-04-23",
+    "club": "Nordsjælland"
+  },
+  {
+    "team": "EGY",
+    "name": "Mahmoud Saber",
+    "number": 21,
+    "position": "MF",
+    "birthDate": "2001-07-30",
+    "club": "ZED"
+  },
+  {
+    "team": "EGY",
+    "name": "Mostafa Shobeir",
+    "number": 23,
+    "position": "GK",
+    "birthDate": "2000-05-15",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Tarek Alaa",
+    "number": 24,
+    "position": "DF",
+    "birthDate": "2002-01-05",
+    "club": "ZED"
+  },
+  {
+    "team": "EGY",
+    "name": "Zizo",
+    "number": 25,
+    "position": "FW",
+    "birthDate": "1996-01-10",
+    "club": "Al Ahly"
+  },
+  {
+    "team": "EGY",
+    "name": "Mohamed Alaa",
+    "number": 26,
+    "position": "GK",
+    "birthDate": "1999-01-01",
+    "club": "El Gouna"
+  },
+  {
+    "team": "IRN",
+    "name": "Alireza Beiranvand",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1992-09-21",
+    "club": "Tractor"
+  },
+  {
+    "team": "IRN",
+    "name": "Saleh Hardani",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1998-12-26",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "IRN",
+    "name": "Ehsan Hajsafi",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1990-02-25",
+    "club": "Sepahan"
+  },
+  {
+    "team": "IRN",
+    "name": "Shojae Khalilzadeh",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1989-05-14",
+    "club": "Tractor"
+  },
+  {
+    "team": "IRN",
+    "name": "Milad Mohammadi",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1993-09-29",
+    "club": "Persepolis"
+  },
+  {
+    "team": "IRN",
+    "name": "Saeid Ezatolahi",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "1996-10-01",
+    "club": "Shabab Al Ahli"
+  },
+  {
+    "team": "IRN",
+    "name": "Alireza Jahanbakhsh",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1993-08-11",
+    "club": "Dender"
+  },
+  {
+    "team": "IRN",
+    "name": "Mohammad Mohebi",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1998-12-20",
+    "club": "Rostov"
+  },
+  {
+    "team": "IRN",
+    "name": "Mehdi Ghayedi",
+    "number": 10,
+    "position": "FW",
+    "birthDate": "1998-12-05",
+    "club": "Al Nasr"
+  },
+  {
+    "team": "IRN",
+    "name": "Ali Alipour",
+    "number": 11,
+    "position": "FW",
+    "birthDate": "1995-11-11",
+    "club": "Persepolis"
+  },
+  {
+    "team": "IRN",
+    "name": "Payam Niazmand",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1995-04-06",
+    "club": "Persepolis"
+  },
+  {
+    "team": "IRN",
+    "name": "Hossein Kanaanizadegan",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1994-03-23",
+    "club": "Persepolis"
+  },
+  {
+    "team": "IRN",
+    "name": "Saman Ghoddos",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1993-09-06",
+    "club": "Kalba"
+  },
+  {
+    "team": "IRN",
+    "name": "Rouzbeh Cheshmi",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "1993-07-24",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "IRN",
+    "name": "Mehdi Torabi",
+    "number": 16,
+    "position": "MF",
+    "birthDate": "1994-09-10",
+    "club": "Tractor"
+  },
+  {
+    "team": "IRN",
+    "name": "Aria Yousefi",
+    "number": 17,
+    "position": "DF",
+    "birthDate": "2002-04-22",
+    "club": "Sepahan"
+  },
+  {
+    "team": "IRN",
+    "name": "Amirhossein Hosseinzadeh",
+    "number": 18,
+    "position": "FW",
+    "birthDate": "2000-10-30",
+    "club": "Tractor"
+  },
+  {
+    "team": "IRN",
+    "name": "Ali Nemati",
+    "number": 19,
+    "position": "DF",
+    "birthDate": "1996-02-08",
+    "club": "Foolad"
+  },
+  {
+    "team": "IRN",
+    "name": "Shahriyar Moghanlou",
+    "number": 20,
+    "position": "FW",
+    "birthDate": "1994-12-21",
+    "club": "Kalba"
+  },
+  {
+    "team": "IRN",
+    "name": "Mohammad Ghorbani",
+    "number": 21,
+    "position": "MF",
+    "birthDate": "2001-10-07",
+    "club": "Al Wahda"
+  },
+  {
+    "team": "IRN",
+    "name": "Hossein Hosseini",
+    "number": 22,
+    "position": "GK",
+    "birthDate": "1992-06-30",
+    "club": "Sepahan"
+  },
+  {
+    "team": "IRN",
+    "name": "Ramin Rezaeian",
+    "number": 23,
+    "position": "DF",
+    "birthDate": "1990-03-21",
+    "club": "Foolad"
+  },
+  {
+    "team": "IRN",
+    "name": "Danial Eiri",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2003-10-26",
+    "club": "Malavan"
+  },
+  {
+    "team": "IRN",
+    "name": "Amirmohammad Razzaghinia",
+    "number": 26,
+    "position": "MF",
+    "birthDate": "2006-04-11",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "NZL",
+    "name": "Sarpreet Singh",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1999-02-20",
+    "club": "Wellington Phoenix"
+  },
+  {
+    "team": "NZL",
+    "name": "Tommy Smith",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "1990-03-31",
+    "club": "Braintree Town"
+  },
+  {
+    "team": "CPV",
+    "name": "Vozinha",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1986-06-03",
+    "club": "Chaves"
+  },
+  {
+    "team": "CPV",
+    "name": "Stopira",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1988-05-20",
+    "club": "Torreense"
+  },
+  {
+    "team": "CPV",
+    "name": "Diney",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1995-01-17",
+    "club": "Al Bataeh"
+  },
+  {
+    "team": "CPV",
+    "name": "Kevin Pina",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "1997-01-27",
+    "club": "Krasnodar"
+  },
+  {
+    "team": "CPV",
+    "name": "Gilson Benchimol",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "2001-12-29",
+    "club": "Akron Tolyatti"
+  },
+  {
+    "team": "CPV",
+    "name": "Garry Rodrigues",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "1990-11-27",
+    "club": "Apollon Limassol"
+  },
+  {
+    "team": "CPV",
+    "name": "Márcio Rosa",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1997-02-23",
+    "club": "Montana"
+  },
+  {
+    "team": "CPV",
+    "name": "Deroy Duarte",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1999-07-04",
+    "club": "Ludogorets Razgrad"
+  },
+  {
+    "team": "CPV",
+    "name": "Laros Duarte",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "1997-02-28",
+    "club": "Puskás Akadémia"
+  },
+  {
+    "team": "CPV",
+    "name": "Yannick Semedo",
+    "number": 16,
+    "position": "MF",
+    "birthDate": "1995-12-29",
+    "club": "Farense"
+  },
+  {
+    "team": "CPV",
+    "name": "Willy Semedo",
+    "number": 17,
+    "position": "MF",
+    "birthDate": "1994-04-27",
+    "club": "Omonia"
+  },
+  {
+    "team": "CPV",
+    "name": "Ryan Mendes",
+    "number": 20,
+    "position": "FW",
+    "birthDate": "1990-01-08",
+    "club": "Iğdır"
+  },
+  {
+    "team": "CPV",
+    "name": "Kelvin Pires",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2000-06-05",
+    "club": "SJK"
+  },
+  {
+    "team": "CPV",
+    "name": "Hélio Varela",
+    "number": 26,
+    "position": "MF",
+    "birthDate": "2002-05-03",
+    "club": "Maccabi Tel Aviv"
+  },
+  {
+    "team": "KSA",
+    "name": "Mohammed Al-Owais",
+    "number": 21,
+    "position": "GK",
+    "birthDate": "1991-10-10",
+    "club": "Al-Ula"
+  },
+  {
+    "team": "URU",
+    "name": "Sergio Rochet",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1993-03-23",
+    "club": "Internacional"
+  },
+  {
+    "team": "URU",
+    "name": "Sebastián Cáceres",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1999-08-18",
+    "club": "América"
+  },
+  {
+    "team": "URU",
+    "name": "Nicolás de la Cruz",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1997-06-01",
+    "club": "Flamengo"
+  },
+  {
+    "team": "URU",
+    "name": "Giorgian de Arrascaeta",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1994-06-01",
+    "club": "Flamengo"
+  },
+  {
+    "team": "URU",
+    "name": "Santiago Mele",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1997-09-06",
+    "club": "Monterrey"
+  },
+  {
+    "team": "URU",
+    "name": "Guillermo Varela",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1993-03-24",
+    "club": "Flamengo"
+  },
+  {
+    "team": "URU",
+    "name": "Agustín Canobbio",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1998-10-01",
+    "club": "Fluminense"
+  },
+  {
+    "team": "URU",
+    "name": "Emiliano Martínez",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "1999-08-17",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "URU",
+    "name": "Matías Viña",
+    "number": 17,
+    "position": "DF",
+    "birthDate": "1997-11-09",
+    "club": "River Plate"
+  },
+  {
+    "team": "URU",
+    "name": "Brian Rodríguez",
+    "number": 18,
+    "position": "FW",
+    "birthDate": "2000-05-20",
+    "club": "América"
+  },
+  {
+    "team": "URU",
+    "name": "Rodrigo Aguirre",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "1994-10-01",
+    "club": "UANL"
+  },
+  {
+    "team": "URU",
+    "name": "Joaquín Piquerez",
+    "number": 22,
+    "position": "MF",
+    "birthDate": "1998-08-24",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "URU",
+    "name": "Juan Manuel Sanabria",
+    "number": 25,
+    "position": "MF",
+    "birthDate": "2000-03-29",
+    "club": "Real Salt Lake"
+  },
+  {
+    "team": "IRQ",
+    "name": "Fahad Talib",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1994-10-21",
+    "club": "Al-Talaba"
+  },
+  {
+    "team": "IRQ",
+    "name": "Rebin Sulaka",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1992-04-12",
+    "club": "Port"
+  },
+  {
+    "team": "IRQ",
+    "name": "Hussein Ali",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "2002-03-01",
+    "club": "Pogoń Szczecin"
+  },
+  {
+    "team": "IRQ",
+    "name": "Zaid Tahseen",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2001-01-29",
+    "club": "Pakhtakor"
+  },
+  {
+    "team": "IRQ",
+    "name": "Akam Hashim",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1998-08-16",
+    "club": "Al-Zawraa"
+  },
+  {
+    "team": "IRQ",
+    "name": "Manaf Younis",
+    "number": 6,
+    "position": "DF",
+    "birthDate": "1996-11-16",
+    "club": "Al-Shorta"
+  },
+  {
+    "team": "IRQ",
+    "name": "Youssef Amyn",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "2003-08-21",
+    "club": "AEK Larnaca"
+  },
+  {
+    "team": "IRQ",
+    "name": "Mohanad Ali",
+    "number": 10,
+    "position": "FW",
+    "birthDate": "2000-06-20",
+    "club": "Dibba"
+  },
+  {
+    "team": "IRQ",
+    "name": "Jalal Hassan",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1991-05-18",
+    "club": "Al-Zawraa"
+  },
+  {
+    "team": "IRQ",
+    "name": "Ali Yousif",
+    "number": 13,
+    "position": "FW",
+    "birthDate": "1996-01-19",
+    "club": "Al-Talaba"
+  },
+  {
+    "team": "IRQ",
+    "name": "Ahmed Maknzi",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "2001-09-24",
+    "club": "Al-Karma"
+  },
+  {
+    "team": "IRQ",
+    "name": "Aymen Hussein",
+    "number": 18,
+    "position": "FW",
+    "birthDate": "1996-03-22",
+    "club": "Al-Karma"
+  },
+  {
+    "team": "IRQ",
+    "name": "Zaid Ismail",
+    "number": 24,
+    "position": "MF",
+    "birthDate": "2002-01-03",
+    "club": "Al-Talaba"
+  },
+  {
+    "team": "IRQ",
+    "name": "Mustafa Saadoon",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2001-05-25",
+    "club": "Al-Shorta"
+  },
+  {
+    "team": "IRQ",
+    "name": "Frans Putros",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "1993-07-14",
+    "club": "Persib"
+  },
+  {
+    "team": "SEN",
+    "name": "Abdoulaye Seck",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1992-06-04",
+    "club": "Maccabi Haifa"
+  },
+  {
+    "team": "SEN",
+    "name": "Bara Sapoko Ndiaye",
+    "number": 22,
+    "position": "MF",
+    "birthDate": "2007-12-31",
+    "club": "Bayern Munich"
+  },
+  {
+    "team": "ALG",
+    "name": "Melvin Mastil",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "2000-02-19",
+    "club": "Stade Nyonnais"
+  },
+  {
+    "team": "ALG",
+    "name": "Achref Abada",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1999-06-15",
+    "club": "USM Alger"
+  },
+  {
+    "team": "ALG",
+    "name": "Mohamed Amine Tougai",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2000-01-22",
+    "club": "Espérance de Tunis"
+  },
+  {
+    "team": "ALG",
+    "name": "Zineddine Belaïd",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1999-03-20",
+    "club": "JS Kabylie"
+  },
+  {
+    "team": "ALG",
+    "name": "Nadhir Benbouali",
+    "number": 12,
+    "position": "FW",
+    "birthDate": "2000-04-17",
+    "club": "Győri ETO"
+  },
+  {
+    "team": "ALG",
+    "name": "Oussama Benbot",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1994-10-11",
+    "club": "USM Alger"
+  },
+  {
+    "team": "ALG",
+    "name": "Adil Boulbina",
+    "number": 20,
+    "position": "FW",
+    "birthDate": "2003-05-02",
+    "club": "Al-Duhail"
+  },
+  {
+    "team": "ARG",
+    "name": "José Manuel López",
+    "number": 21,
+    "position": "FW",
+    "birthDate": "2000-12-06",
+    "club": "Palmeiras"
+  },
+  {
+    "team": "AUT",
+    "name": "Marko Arnautović",
+    "number": 7,
+    "position": "FW",
+    "birthDate": "1989-04-19",
+    "club": "Red Star Belgrade"
+  },
+  {
+    "team": "JOR",
+    "name": "Yazeed Abulaila",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1993-01-08",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Mohammad Abu Hashish",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1995-05-09",
+    "club": "Al-Karma"
+  },
+  {
+    "team": "JOR",
+    "name": "Abdallah Nasib",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1994-02-25",
+    "club": "Al-Zawraa"
+  },
+  {
+    "team": "JOR",
+    "name": "Husam Abu Dahab",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "2000-05-13",
+    "club": "Al-Faisaly"
+  },
+  {
+    "team": "JOR",
+    "name": "Amer Jamous",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "2002-07-03",
+    "club": "Al-Zawraa"
+  },
+  {
+    "team": "JOR",
+    "name": "Mohammad Abu Zrayq",
+    "number": 7,
+    "position": "FW",
+    "birthDate": "1997-12-30",
+    "club": "Raja Casablanca"
+  },
+  {
+    "team": "JOR",
+    "name": "Noor Al-Rawabdeh",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1997-02-24",
+    "club": "Selangor"
+  },
+  {
+    "team": "JOR",
+    "name": "Ali Olwan",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "2000-03-26",
+    "club": "Al-Sailiya"
+  },
+  {
+    "team": "JOR",
+    "name": "Odeh Al-Fakhouri",
+    "number": 11,
+    "position": "FW",
+    "birthDate": "2005-11-22",
+    "club": "Pyramids"
+  },
+  {
+    "team": "JOR",
+    "name": "Nour Bani Attiah",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1993-01-25",
+    "club": "Al-Faisaly"
+  },
+  {
+    "team": "JOR",
+    "name": "Mahmoud Al-Mardi",
+    "number": 13,
+    "position": "FW",
+    "birthDate": "1993-10-06",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Rajaei Ayed",
+    "number": 14,
+    "position": "MF",
+    "birthDate": "1993-07-25",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Ibrahim Sadeh",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "2000-04-27",
+    "club": "Al-Karma"
+  },
+  {
+    "team": "JOR",
+    "name": "Mo Abualnadi",
+    "number": 16,
+    "position": "DF",
+    "birthDate": "2001-02-08",
+    "club": "Selangor"
+  },
+  {
+    "team": "JOR",
+    "name": "Salim Obaid",
+    "number": 17,
+    "position": "DF",
+    "birthDate": "1992-01-17",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Mohammad Taha",
+    "number": 18,
+    "position": "DF",
+    "birthDate": "2005-07-13",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Saed Al-Rosan",
+    "number": 19,
+    "position": "DF",
+    "birthDate": "1997-02-01",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Mohannad Abu Taha",
+    "number": 20,
+    "position": "MF",
+    "birthDate": "2003-02-02",
+    "club": "Al-Quwa Al-Jawiya"
+  },
+  {
+    "team": "JOR",
+    "name": "Nizar Al-Rashdan",
+    "number": 21,
+    "position": "MF",
+    "birthDate": "1999-03-23",
+    "club": "Qatar SC"
+  },
+  {
+    "team": "JOR",
+    "name": "Abdallah Al-Fakhouri",
+    "number": 22,
+    "position": "GK",
+    "birthDate": "2000-01-22",
+    "club": "Al-Wehdat"
+  },
+  {
+    "team": "JOR",
+    "name": "Ihsan Haddad",
+    "number": 23,
+    "position": "DF",
+    "birthDate": "1994-02-05",
+    "club": "Al-Hussein"
+  },
+  {
+    "team": "JOR",
+    "name": "Ali Azaizeh",
+    "number": 24,
+    "position": "FW",
+    "birthDate": "2004-04-13",
+    "club": "Al-Shabab"
+  },
+  {
+    "team": "JOR",
+    "name": "Mohammad Al-Dawoud",
+    "number": 25,
+    "position": "MF",
+    "birthDate": "1992-04-12",
+    "club": "Al-Wehdat"
+  },
+  {
+    "team": "JOR",
+    "name": "Anas Badawi",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "1997-09-13",
+    "club": "Al-Faisaly"
+  },
+  {
+    "team": "COD",
+    "name": "Samuel Moutoussamy",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1996-08-12",
+    "club": "Atromitos"
+  },
+  {
+    "team": "COD",
+    "name": "Théo Bongonda",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1995-11-20",
+    "club": "Spartak Moscow"
+  },
+  {
+    "team": "COD",
+    "name": "Gaël Kakuta",
+    "number": 11,
+    "position": "FW",
+    "birthDate": "1991-06-21",
+    "club": "AEL"
+  },
+  {
+    "team": "COD",
+    "name": "Aaron Tshibola",
+    "number": 15,
+    "position": "MF",
+    "birthDate": "1995-01-02",
+    "club": "Kilmarnock"
+  },
+  {
+    "team": "COD",
+    "name": "Timothy Fayulu",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1999-07-24",
+    "club": "Noah"
+  },
+  {
+    "team": "COD",
+    "name": "Fiston Mayele",
+    "number": 19,
+    "position": "FW",
+    "birthDate": "1994-06-24",
+    "club": "Pyramids"
+  },
+  {
+    "team": "COD",
+    "name": "Gédéon Kalulu",
+    "number": 24,
+    "position": "DF",
+    "birthDate": "1997-08-29",
+    "club": "Aris Limassol"
+  },
+  {
+    "team": "COL",
+    "name": "Santiago Arias",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1992-01-13",
+    "club": "Independiente"
+  },
+  {
+    "team": "COL",
+    "name": "Jorge Carrascal",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1998-05-25",
+    "club": "Flamengo"
+  },
+  {
+    "team": "COL",
+    "name": "Jhon Córdoba",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "1993-05-11",
+    "club": "Krasnodar"
+  },
+  {
+    "team": "COL",
+    "name": "James Rodríguez",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1991-07-12",
+    "club": "Minnesota United FC"
+  },
+  {
+    "team": "COL",
+    "name": "Camilo Vargas",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1989-03-09",
+    "club": "Atlas"
+  },
+  {
+    "team": "COL",
+    "name": "Willer Ditta",
+    "number": 18,
+    "position": "DF",
+    "birthDate": "1998-01-23",
+    "club": "Cruz Azul"
+  },
+  {
+    "team": "COL",
+    "name": "Andrés Gómez",
+    "number": 26,
+    "position": "FW",
+    "birthDate": "2002-09-12",
+    "club": "Vasco da Gama"
+  },
+  {
+    "team": "UZB",
+    "name": "Utkir Yusupov",
+    "number": 1,
+    "position": "GK",
+    "birthDate": "1991-01-04",
+    "club": "Navbahor Namangan"
+  },
+  {
+    "team": "UZB",
+    "name": "Khojiakbar Alijonov",
+    "number": 3,
+    "position": "DF",
+    "birthDate": "1997-04-19",
+    "club": "Pakhtakor"
+  },
+  {
+    "team": "UZB",
+    "name": "Farrukh Sayfiev",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1991-01-17",
+    "club": "Neftchi Fergana"
+  },
+  {
+    "team": "UZB",
+    "name": "Rustam Ashurmatov",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "1996-07-07",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "UZB",
+    "name": "Akmal Mozgovoy",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "1999-04-02",
+    "club": "Pakhtakor"
+  },
+  {
+    "team": "UZB",
+    "name": "Otabek Shukurov",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1996-06-22",
+    "club": "Baniyas"
+  },
+  {
+    "team": "UZB",
+    "name": "Jamshid Iskanderov",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1993-10-16",
+    "club": "Neftchi Fergana"
+  },
+  {
+    "team": "UZB",
+    "name": "Odiljon Hamrobekov",
+    "number": 9,
+    "position": "MF",
+    "birthDate": "1996-02-13",
+    "club": "Tractor"
+  },
+  {
+    "team": "UZB",
+    "name": "Jaloliddin Masharipov",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1993-09-01",
+    "club": "Esteghlal"
+  },
+  {
+    "team": "UZB",
+    "name": "Oston Urunov",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "2000-12-19",
+    "club": "Persepolis"
+  },
+  {
+    "team": "UZB",
+    "name": "Abduvohid Nematov",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "2001-03-20",
+    "club": "Nasaf"
+  },
+  {
+    "team": "UZB",
+    "name": "Sherzod Nasrullaev",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1998-07-23",
+    "club": "Nasaf"
+  },
+  {
+    "team": "UZB",
+    "name": "Umar Eshmurodov",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "1992-11-30",
+    "club": "Nasaf"
+  },
+  {
+    "team": "UZB",
+    "name": "Botirali Ergashev",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1995-06-23",
+    "club": "Neftchi Fergana"
+  },
+  {
+    "team": "UZB",
+    "name": "Dostonbek Khamdamov",
+    "number": 17,
+    "position": "MF",
+    "birthDate": "1996-07-24",
+    "club": "Pakhtakor"
+  },
+  {
+    "team": "UZB",
+    "name": "Abdulla Abdullaev",
+    "number": 18,
+    "position": "DF",
+    "birthDate": "1997-09-01",
+    "club": "Dibba"
+  },
+  {
+    "team": "UZB",
+    "name": "Azizjon Ganiev",
+    "number": 19,
+    "position": "MF",
+    "birthDate": "1998-02-22",
+    "club": "Al Bataeh"
+  },
+  {
+    "team": "UZB",
+    "name": "Azizbek Amonov",
+    "number": 20,
+    "position": "FW",
+    "birthDate": "1997-10-30",
+    "club": "Dinamo Samarqand"
+  },
+  {
+    "team": "UZB",
+    "name": "Igor Sergeev",
+    "number": 21,
+    "position": "FW",
+    "birthDate": "1993-04-30",
+    "club": "Persepolis"
+  },
+  {
+    "team": "UZB",
+    "name": "Sherzod Esanov",
+    "number": 23,
+    "position": "MF",
+    "birthDate": "2003-02-01",
+    "club": "Bukhara"
+  },
+  {
+    "team": "UZB",
+    "name": "Bekhruz Karimov",
+    "number": 24,
+    "position": "DF",
+    "birthDate": "2007-08-07",
+    "club": "Surkhon Termiz"
+  },
+  {
+    "team": "UZB",
+    "name": "Avazbek Ulmasaliev",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "2000-03-27",
+    "club": "AGMK"
+  },
+  {
+    "team": "UZB",
+    "name": "Jakhongir Urozov",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "2004-01-18",
+    "club": "Dinamo Samarqand"
+  },
+  {
+    "team": "GHA",
+    "name": "Benjamin Asare",
+    "number": 16,
+    "position": "GK",
+    "birthDate": "1992-07-13",
+    "club": "Hearts of Oak"
+  },
+  {
+    "team": "GHA",
+    "name": "Derrick Luckassen",
+    "number": 23,
+    "position": "DF",
+    "birthDate": "1995-07-03",
+    "club": "Pafos"
+  },
+  {
+    "team": "PAN",
+    "name": "César Blackman",
+    "number": 2,
+    "position": "DF",
+    "birthDate": "1998-04-02",
+    "club": "Slovan Bratislava"
+  },
+  {
+    "team": "PAN",
+    "name": "Fidel Escobar",
+    "number": 4,
+    "position": "DF",
+    "birthDate": "1995-01-09",
+    "club": "Saprissa"
+  },
+  {
+    "team": "PAN",
+    "name": "Edgardo Fariña",
+    "number": 5,
+    "position": "DF",
+    "birthDate": "2001-10-19",
+    "club": "Pari Nizhny Novgorod"
+  },
+  {
+    "team": "PAN",
+    "name": "Cristian Martínez",
+    "number": 6,
+    "position": "MF",
+    "birthDate": "1997-02-06",
+    "club": "Ironi Kiryat Shmona"
+  },
+  {
+    "team": "PAN",
+    "name": "José Luis Rodríguez",
+    "number": 7,
+    "position": "MF",
+    "birthDate": "1998-06-19",
+    "club": "Juárez"
+  },
+  {
+    "team": "PAN",
+    "name": "Adalberto Carrasquilla",
+    "number": 8,
+    "position": "MF",
+    "birthDate": "1998-11-28",
+    "club": "UNAM"
+  },
+  {
+    "team": "PAN",
+    "name": "Tomás Rodríguez",
+    "number": 9,
+    "position": "FW",
+    "birthDate": "1999-03-09",
+    "club": "Saprissa"
+  },
+  {
+    "team": "PAN",
+    "name": "Ismael Díaz",
+    "number": 10,
+    "position": "MF",
+    "birthDate": "1997-05-12",
+    "club": "León"
+  },
+  {
+    "team": "PAN",
+    "name": "Yoel Bárcenas",
+    "number": 11,
+    "position": "MF",
+    "birthDate": "1993-10-23",
+    "club": "Mazatlán"
+  },
+  {
+    "team": "PAN",
+    "name": "César Samudio",
+    "number": 12,
+    "position": "GK",
+    "birthDate": "1994-02-23",
+    "club": "Marathón"
+  },
+  {
+    "team": "PAN",
+    "name": "Jiovany Ramos",
+    "number": 13,
+    "position": "DF",
+    "birthDate": "1997-01-26",
+    "club": "Puerto Cabello"
+  },
+  {
+    "team": "PAN",
+    "name": "Eric Davis",
+    "number": 15,
+    "position": "DF",
+    "birthDate": "1991-03-31",
+    "club": "Plaza Amador"
+  },
+  {
+    "team": "PAN",
+    "name": "Cecilio Waterman",
+    "number": 18,
+    "position": "FW",
+    "birthDate": "1991-04-13",
+    "club": "Universidad de Concepción"
+  },
+  {
+    "team": "PAN",
+    "name": "Alberto Quintero",
+    "number": 19,
+    "position": "MF",
+    "birthDate": "1987-12-18",
+    "club": "Plaza Amador"
+  },
+  {
+    "team": "PAN",
+    "name": "César Yanis",
+    "number": 21,
+    "position": "MF",
+    "birthDate": "1996-01-28",
+    "club": "Cobresal"
+  },
+  {
+    "team": "PAN",
+    "name": "Roderick Miller",
+    "number": 25,
+    "position": "DF",
+    "birthDate": "1992-04-03",
+    "club": "Turan Tovuz"
+  },
+  {
+    "team": "PAN",
+    "name": "Jorge Gutiérrez",
+    "number": 26,
+    "position": "DF",
+    "birthDate": "1998-09-01",
+    "club": "Deportivo La Guaira"
+  }
+]

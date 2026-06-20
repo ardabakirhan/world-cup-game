@@ -1,0 +1,2593 @@
+{
+  "CZE": {
+    "name": "Czechia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "A"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KOR": {
+    "name": "Korea Republic",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "A"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MEX": {
+    "name": "Mexico",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "A"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "RSA": {
+    "name": "South Africa",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "A"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BIH": {
+    "name": "Bosnia and Herzegovina",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "B"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CAN": {
+    "name": "Canada",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "B"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "QAT": {
+    "name": "Qatar",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "B"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SUI": {
+    "name": "Switzerland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "B"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BRA": {
+    "name": "Brazil",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "C"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "HAI": {
+    "name": "Haiti",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "C"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MAR": {
+    "name": "Morocco",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "C"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SCO": {
+    "name": "Scotland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "C"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AUS": {
+    "name": "Australia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "D"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PAR": {
+    "name": "Paraguay",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "D"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TUR": {
+    "name": "Türkiye",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "D"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "USA": {
+    "name": "United States",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "D"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "CIV": {
+    "name": "Côte d'Ivoire",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "E"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CUW": {
+    "name": "Curaçao",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "E"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ECU": {
+    "name": "Ecuador",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "E"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GER": {
+    "name": "Germany",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "E"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "JPN": {
+    "name": "Japan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "F"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NED": {
+    "name": "Netherlands",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "F"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SWE": {
+    "name": "Sweden",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "F"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TUN": {
+    "name": "Tunisia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "F"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BEL": {
+    "name": "Belgium",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "G"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "EGY": {
+    "name": "Egypt",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "G"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "IRN": {
+    "name": "IR Iran",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "G"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NZL": {
+    "name": "New Zealand",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "G"
+      },
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CPV": {
+    "name": "Cabo Verde",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "H"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ESP": {
+    "name": "Spain",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "H"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KSA": {
+    "name": "Saudi Arabia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "H"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "URU": {
+    "name": "Uruguay",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "H"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "FRA": {
+    "name": "France",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "I"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "IRQ": {
+    "name": "Iraq",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "I"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NOR": {
+    "name": "Norway",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "I"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SEN": {
+    "name": "Senegal",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "I"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ALG": {
+    "name": "Algeria",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "J"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ARG": {
+    "name": "Argentina",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "J"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AUT": {
+    "name": "Austria",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "J"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "JOR": {
+    "name": "Jordan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "J"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "COD": {
+    "name": "DR Congo",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "K"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "COL": {
+    "name": "Colombia",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "K"
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "POR": {
+    "name": "Portugal",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "K"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "UZB": {
+    "name": "Uzbekistan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "K"
+      },
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CRO": {
+    "name": "Croatia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "L"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ENG": {
+    "name": "England",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "L"
+      },
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GHA": {
+    "name": "Ghana",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "L"
+      },
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PAN": {
+    "name": "Panama",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "WC_2026",
+        "qualified": true,
+        "group": "L"
+      },
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AFG": {
+    "name": "Afghanistan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AIA": {
+    "name": "Anguilla",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ALB": {
+    "name": "Albania",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AND": {
+    "name": "Andorra",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ANG": {
+    "name": "Angola",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ARM": {
+    "name": "Armenia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ARU": {
+    "name": "Aruba",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ASA": {
+    "name": "American Samoa",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ATG": {
+    "name": "Antigua & Barbuda",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "AZE": {
+    "name": "Azerbaijan",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BAH": {
+    "name": "Bahamas",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BAN": {
+    "name": "Bangladesh",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BDI": {
+    "name": "Burundi",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BEN": {
+    "name": "Benin",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BER": {
+    "name": "Bermuda",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BFA": {
+    "name": "Burkina Faso",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BHR": {
+    "name": "Bahrain",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BHU": {
+    "name": "Bhutan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BLR": {
+    "name": "Belarus",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BLZ": {
+    "name": "Belize",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BOL": {
+    "name": "Bolivia",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BOT": {
+    "name": "Botswana",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BRB": {
+    "name": "Barbados",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BRU": {
+    "name": "Brunei",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "BUL": {
+    "name": "Bulgaria",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CAM": {
+    "name": "Cambodia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CAY": {
+    "name": "Cayman Islands",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CGO": {
+    "name": "Congo",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CHA": {
+    "name": "Chad",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CHI": {
+    "name": "Chile",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CHN": {
+    "name": "China PR",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CMR": {
+    "name": "Cameroon",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "COK": {
+    "name": "Cook Islands",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "COM": {
+    "name": "Comoros",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CRC": {
+    "name": "Costa Rica",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "CTA": {
+    "name": "Central African Rep.",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CUB": {
+    "name": "Cuba",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "CYP": {
+    "name": "Cyprus",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "DEN": {
+    "name": "Denmark",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "DJI": {
+    "name": "Djibouti",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "DMA": {
+    "name": "Dominica",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "DOM": {
+    "name": "Dominican Republic",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "EQG": {
+    "name": "Equatorial Guinea",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ERI": {
+    "name": "Eritrea",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "EST": {
+    "name": "Estonia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ETH": {
+    "name": "Ethiopia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "FIJ": {
+    "name": "Fiji",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "FIN": {
+    "name": "Finland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "FRO": {
+    "name": "Faroe Islands",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GAB": {
+    "name": "Gabon",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GAM": {
+    "name": "Gambia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GEO": {
+    "name": "Georgia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GIB": {
+    "name": "Gibraltar",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GNB": {
+    "name": "Guinea-Bissau",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GRE": {
+    "name": "Greece",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GRN": {
+    "name": "Grenada",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GUA": {
+    "name": "Guatemala",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GUI": {
+    "name": "Guinea",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GUM": {
+    "name": "Guam",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "GUY": {
+    "name": "Guyana",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "HKG": {
+    "name": "Hong Kong",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "HON": {
+    "name": "Honduras",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "HUN": {
+    "name": "Hungary",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "IDN": {
+    "name": "Indonesia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "IND": {
+    "name": "India",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "IRL": {
+    "name": "Republic of Ireland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ISL": {
+    "name": "Iceland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ISR": {
+    "name": "Israel",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ITA": {
+    "name": "Italy",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "JAM": {
+    "name": "Jamaica",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "KAZ": {
+    "name": "Kazakhstan",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KEN": {
+    "name": "Kenya",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KGZ": {
+    "name": "Kyrgyz Republic",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KOS": {
+    "name": "Kosovo",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "KUW": {
+    "name": "Kuwait",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LAO": {
+    "name": "Laos",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LBA": {
+    "name": "Libya",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LBR": {
+    "name": "Liberia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LCA": {
+    "name": "St. Lucia",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LES": {
+    "name": "Lesotho",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LIB": {
+    "name": "Lebanon",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LIE": {
+    "name": "Liechtenstein",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LTU": {
+    "name": "Lithuania",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LUX": {
+    "name": "Luxembourg",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "LVA": {
+    "name": "Latvia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MAC": {
+    "name": "Macau",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MAD": {
+    "name": "Madagascar",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MAS": {
+    "name": "Malaysia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MAW": {
+    "name": "Malawi",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MDA": {
+    "name": "Moldova",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MDV": {
+    "name": "Maldives",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MKD": {
+    "name": "North Macedonia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MLI": {
+    "name": "Mali",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MLT": {
+    "name": "Malta",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MNE": {
+    "name": "Montenegro",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MNG": {
+    "name": "Mongolia",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MOZ": {
+    "name": "Mozambique",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MRI": {
+    "name": "Mauritius",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MSR": {
+    "name": "Montserrat",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MTN": {
+    "name": "Mauritania",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "MYA": {
+    "name": "Myanmar",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NAM": {
+    "name": "Namibia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NCA": {
+    "name": "Nicaragua",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NCL": {
+    "name": "New Caledonia",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NEP": {
+    "name": "Nepal",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NGA": {
+    "name": "Nigeria",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NIG": {
+    "name": "Niger",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "NIR": {
+    "name": "Northern Ireland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "OMA": {
+    "name": "Oman",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PAK": {
+    "name": "Pakistan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PER": {
+    "name": "Peru",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PHI": {
+    "name": "Philippines",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PLE": {
+    "name": "Palestine",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PNG": {
+    "name": "Papua New Guinea",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "POL": {
+    "name": "Poland",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PRK": {
+    "name": "Korea DPR",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "PUR": {
+    "name": "Puerto Rico",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ROU": {
+    "name": "Romania",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "RUS": {
+    "name": "Russia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "RWA": {
+    "name": "Rwanda",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SAM": {
+    "name": "Samoa",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SDN": {
+    "name": "Sudan",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SEY": {
+    "name": "Seychelles",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SGP": {
+    "name": "Singapore",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SKN": {
+    "name": "St. Kitts & Nevis",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SLE": {
+    "name": "Sierra Leone",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SLV": {
+    "name": "El Salvador",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SMR": {
+    "name": "San Marino",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SOL": {
+    "name": "Solomon Islands",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SOM": {
+    "name": "Somalia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SRB": {
+    "name": "Serbia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SRI": {
+    "name": "Sri Lanka",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SSD": {
+    "name": "South Sudan",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "STP": {
+    "name": "São Tomé e Príncipe",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SUR": {
+    "name": "Suriname",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SVK": {
+    "name": "Slovakia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SVN": {
+    "name": "Slovenia",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SWZ": {
+    "name": "Eswatini",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "SYR": {
+    "name": "Syria",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TAH": {
+    "name": "Tahiti",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TAN": {
+    "name": "Tanzania",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TCA": {
+    "name": "Turks & Caicos",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TGA": {
+    "name": "Tonga",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "THA": {
+    "name": "Thailand",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TJK": {
+    "name": "Tajikistan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TKM": {
+    "name": "Turkmenistan",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TLS": {
+    "name": "Timor-Leste",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TOG": {
+    "name": "Togo",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TPE": {
+    "name": "Chinese Taipei",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "TRI": {
+    "name": "Trinidad & Tobago",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      },
+      {
+        "id": "COPA_2027",
+        "qualified": false,
+        "potential_invitee": true
+      }
+    ]
+  },
+  "UAE": {
+    "name": "UAE",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "UGA": {
+    "name": "Uganda",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "UKR": {
+    "name": "Ukraine",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VAN": {
+    "name": "Vanuatu",
+    "confederation": "OFC",
+    "tournaments": [
+      {
+        "id": "OFC_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VEN": {
+    "name": "Venezuela",
+    "confederation": "CONMEBOL",
+    "tournaments": [
+      {
+        "id": "COPA_2027",
+        "qualified": true,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VGB": {
+    "name": "British Virgin Islands",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VIE": {
+    "name": "Vietnam",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VIN": {
+    "name": "St. Vincent & Gren.",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "VIR": {
+    "name": "US Virgin Islands",
+    "confederation": "CONCACAF",
+    "tournaments": [
+      {
+        "id": "GOLD_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "WAL": {
+    "name": "Wales",
+    "confederation": "UEFA",
+    "tournaments": [
+      {
+        "id": "EURO_2028",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "YEM": {
+    "name": "Yemen",
+    "confederation": "AFC",
+    "tournaments": [
+      {
+        "id": "ASIAN_CUP_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ZAM": {
+    "name": "Zambia",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  },
+  "ZIM": {
+    "name": "Zimbabwe",
+    "confederation": "CAF",
+    "tournaments": [
+      {
+        "id": "AFCON_2027",
+        "qualified": false,
+        "confederation_member": true
+      }
+    ]
+  }
+}
