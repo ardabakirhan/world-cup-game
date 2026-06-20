@@ -50,11 +50,28 @@ export function groupStandings(fixtures: Fixture[], group: string, teamIds: stri
   return list
 }
 
-/** Third-placed teams of all groups ranked: points > GD > GF. */
-export function rankedThirds(standingsByGroup: Map<string, StandingRow[]>): { group: string; row: StandingRow }[] {
-  const thirds = [...standingsByGroup.entries()].map(([group, rows]) => ({ group, row: rows[2] }))
-  thirds.sort((a, b) =>
-    b.row.points - a.row.points || b.row.gd - a.row.gd || b.row.gf - a.row.gf ||
-    a.group.localeCompare(b.group))
+/**
+ * Third-placed teams ranked by FIFA's official WC 2026 tiebreaker order:
+ * 1. Points  2. Goal difference  3. Goals scored  4. FIFA ranking (ovrOf proxy)
+ * Pass `ovrOf` to enable the ranking tiebreaker; falls back to group-ID sort.
+ */
+export function rankedThirds(
+  standingsByGroup: Map<string, StandingRow[]>,
+  ovrOf?: (teamId: string) => number,
+): { group: string; row: StandingRow }[] {
+  const thirds = [...standingsByGroup.entries()]
+    .filter(([, rows]) => rows.length >= 3)
+    .map(([group, rows]) => ({ group, row: rows[2] }))
+  thirds.sort((a, b) => {
+    if (b.row.points !== a.row.points) return b.row.points - a.row.points
+    if (b.row.gd !== a.row.gd) return b.row.gd - a.row.gd
+    if (b.row.gf !== a.row.gf) return b.row.gf - a.row.gf
+    if (ovrOf) {
+      const aOvr = ovrOf(a.row.teamId)
+      const bOvr = ovrOf(b.row.teamId)
+      if (bOvr !== aOvr) return bOvr - aOvr
+    }
+    return a.group.localeCompare(b.group)
+  })
   return thirds
 }

@@ -5,11 +5,10 @@ import { getPlayer, getTeam } from '../data/teams'
 import { Avatar } from '../components/Avatar'
 import { useGame } from '../store/gameStore'
 import type { MatchSim } from '../domain/engine/matchEngine'
-import type { Position } from '../data/types'
 import type { Fixture, MatchEvent, Tactics } from '../domain/types'
-import { FORMATIONS } from '../domain/engine/formations'
-import { positionPenalty, type EnginePlayer } from '../domain/engine/ratings'
-import { positionFit } from '../domain/positions'
+import { FORMATIONS, FORMATION_KEYS } from '../domain/engine/formations'
+import type { EnginePlayer } from '../domain/engine/ratings'
+import { positionFit, positionFitGrade, OVR_PENALTY } from '../domain/positions'
 import { Modal, Segmented } from '../components/ui'
 import { Flag } from '../components/Flag'
 import { PitchView, type ChipData } from '../components/PitchView'
@@ -675,7 +674,9 @@ export function MatchLive() {
       <Modal open={showTactics} onClose={() => setShowTactics(false)}>
         <TacticPanel
           tactics={userSide.tactics}
+          formation={userSide.formation ?? g.lineup.formation}
           onChange={(tc) => { sim.setTactics(userKey, tc); forceRender((x) => x + 1) }}
+          onFormationChange={(fm) => { sim.setFormation(userKey, fm); forceRender((x) => x + 1) }}
         />
       </Modal>
     </div>
@@ -762,18 +763,22 @@ function SubPanel(props: {
   const isBreak = props.sim.phase === 'HT' || props.sim.phase === 'BREAK_ET'
   const windowsLeft = 3 - side.windowsUsed
 
-  const chipOf = (p: EnginePlayer, slotRole: Position | null, slotLabel?: string): ChipData => ({
-    id: p.id,
-    number: 0,
-    label: p.name.split(' ').pop() ?? p.name,
-    ovr: p.stats.overall,
-    effOvr: Math.round(p.stats.overall * positionPenalty(p.position, slotRole ?? p.position)),
-    icons:
-      (props.sim.pendingInjury?.playerId === p.id ? '🚑' : '') +
-      (p.fitness < 55 ? '🟡' : ''),
-    avatar: getPlayer(p.id).avatar,
-    posFit: slotLabel ? positionFit(slotLabel, getPlayer(p.id)) : undefined,
-  })
+  const chipOf = (p: EnginePlayer, slotLabel?: string): ChipData => {
+    const pdata = { position: p.position, positions: p.positions, primaryPosition: p.primaryPosition }
+    const grade = slotLabel ? positionFitGrade(slotLabel, pdata) : 'natural'
+    return {
+      id: p.id,
+      number: 0,
+      label: p.name.split(' ').pop() ?? p.name,
+      ovr: p.stats.overall,
+      effOvr: Math.max(40, p.stats.overall - OVR_PENALTY[grade]),
+      icons:
+        (props.sim.pendingInjury?.playerId === p.id ? '🚑' : '') +
+        (p.fitness < 55 ? '🟡' : ''),
+      avatar: getPlayer(p.id).avatar,
+      posFit: slotLabel ? positionFit(slotLabel, pdata) : undefined,
+    }
+  }
 
   const used = new Set<string>()
   const basePitchPlayers: (EnginePlayer | null)[] = slots.map((slot) => {
@@ -798,12 +803,12 @@ function SubPanel(props: {
     return p
   })
 
-  const pitch = pitchPlayers.map((p, i) => (p ? chipOf(p, slots[i].role, slots[i].label) : null))
-  
+  const pitch = pitchPlayers.map((p, i) => (p ? chipOf(p, slots[i].label) : null))
+
   const pendingInIds = new Set(Object.values(pendingSubs))
   const bench = side.bench
     .filter((p) => !pendingInIds.has(p.id))
-    .map((p) => chipOf(p, null))
+    .map((p) => chipOf(p))
 
   const netSubsCount = Object.keys(pendingSubs).length
 
@@ -873,12 +878,60 @@ function SubPanel(props: {
   )
 }
 
-function TacticPanel(props: { tactics: Tactics; onChange: (t: Tactics) => void }) {
+function TacticPanel(props: {
+  tactics: Tactics
+  formation: string
+  onChange: (t: Tactics) => void
+  onFormationChange: (f: string) => void
+}) {
   const { t } = useTranslation()
   const tc = props.tactics
+  const [backLine, setBackLine] = useState(props.formation[0] ?? '4')
+
   return (
     <div className="flex flex-col gap-3">
       <h2 className="text-lg font-extrabold">📋 {t('match.tacticsBtn')}</h2>
+
+      {/* Formation change */}
+      <div>
+        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--muted)] mb-1.5">
+          {t('lineup.formation', 'Formation')}
+        </div>
+        {/* Back-line filter */}
+        <div className="flex gap-1 mb-1.5">
+          {(['4', '3', '5'] as const).map((bl) => (
+            <button
+              key={bl}
+              className="flex-1 rounded-lg py-1 text-[11px] font-bold border"
+              style={{
+                background: backLine === bl ? 'var(--accent)' : 'var(--card2)',
+                borderColor: backLine === bl ? 'var(--accent)' : 'var(--line)',
+                color: backLine === bl ? '#fff' : 'var(--muted)',
+              }}
+              onClick={() => setBackLine(bl)}
+            >
+              {bl}-back
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {FORMATION_KEYS.filter((k) => k[0] === backLine).map((k) => (
+            <button
+              key={k}
+              className="rounded-lg border px-2.5 py-1.5 text-[11px] font-bold"
+              style={{
+                background: k === props.formation ? 'var(--accent)' : 'var(--card2)',
+                borderColor: k === props.formation ? 'var(--accent)' : 'var(--line)',
+                color: k === props.formation ? '#fff' : 'var(--muted)',
+              }}
+              onClick={() => props.onFormationChange(k)}
+            >
+              {k}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <Segmented
         options={[
           { value: 'defensive', label: t('tactics.defensive') },

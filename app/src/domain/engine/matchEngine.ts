@@ -8,7 +8,8 @@ import {
   effectiveness, tacticEffect, teamRatings,
   type EnginePlayer, type TacticEffect, type TeamRatings,
 } from './ratings'
-import { FORMATIONS } from './formations'
+import { FORMATIONS, FORMATION_BIAS } from './formations'
+import { positionFitGrade } from '../positions'
 
 function emptyStats(): MatchStats {
   return { shots: 0, shotsOnTarget: 0, corners: 0, fouls: 0, offsides: 0 }
@@ -238,6 +239,49 @@ export class MatchSim {
     this.refresh(which)
   }
 
+  /** Change formation mid-match. Players are optimally re-assigned to the new
+   *  slots (GK-first greedy, scored by positionFitGrade). */
+  setFormation(which: 'home' | 'away', newFormation: string) {
+    const s = this.side(which)
+    const newSlots = FORMATIONS[newFormation]
+    if (!newSlots) return
+    s.formation = newFormation
+    s.formationBias = FORMATION_BIAS[newFormation] ?? 0
+
+    const players = [...s.starters]
+    const assigned = new Set<string>()
+
+    // GK slot first so the keeper is never displaced to an outfield slot
+    const ordered = [
+      ...newSlots.filter((sl) => sl.role === 'GK'),
+      ...newSlots.filter((sl) => sl.role !== 'GK'),
+    ]
+
+    for (const slot of ordered) {
+      const candidates = players.filter((p) => !assigned.has(p.id))
+      if (!candidates.length) break
+
+      const scored = candidates.map((p) => {
+        let score: number
+        if (p.positions?.length || p.primaryPosition) {
+          const pdata = { position: p.position, positions: p.positions, primaryPosition: p.primaryPosition }
+          const grade = positionFitGrade(slot.label, pdata)
+          score = grade === 'natural' ? 0 : grade === 'adjacent' ? 1 : grade === 'gk_swap' ? 10 : 2
+        } else {
+          score = p.position === slot.role ? 0 : (p.position === 'GK' || slot.role === 'GK' ? 10 : 2)
+        }
+        return { p, score }
+      }).sort((a, b) => a.score - b.score)
+
+      const best = scored[0].p
+      best.slotRole  = slot.role
+      best.slotLabel = slot.label
+      assigned.add(best.id)
+    }
+
+    this.refresh(which)
+  }
+
   applySubs(which: 'home' | 'away', subs: SubRequest[]): boolean {
     const s = this.side(which)
     if (subs.length === 0) return true
@@ -251,6 +295,7 @@ export class MatchSim {
       const out = s.starters[outIdx]
       const sub = s.bench[inIdx]
       sub.slotRole = out.slotRole
+      sub.slotLabel = out.slotLabel // inherit specific slot so OOS grade is correct
       s.starters[outIdx] = sub
       s.bench.splice(inIdx, 1)
       s.subsMade++

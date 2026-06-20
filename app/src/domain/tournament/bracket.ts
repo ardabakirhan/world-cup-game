@@ -1,7 +1,11 @@
-import { GROUPS, groupTeams } from '../../data/teams'
+import { GROUPS, groupTeams, getTeam, teamAvgOverall } from '../../data/teams'
 import type { Fixture, MatchResult, Round } from '../types'
 import { ROUND_DAY } from './schedule'
 import { groupStandings, rankedThirds } from './standings'
+
+function teamOvr(id: string): number {
+  try { return teamAvgOverall(getTeam(id)) } catch { return 0 }
+}
 
 /**
  * Round-of-32 template, modelled on the official FIFA 2026 bracket shape:
@@ -54,7 +58,7 @@ export function buildR32(fixtures: Fixture[]): Fixture[] {
   const standings = new Map(
     GROUPS.map((g) => [g, groupStandings(fixtures, g, groupTeams(g).map((t) => t.id))]),
   )
-  const thirds = rankedThirds(standings).slice(0, 8)
+  const thirds = rankedThirds(standings, teamOvr).slice(0, 8)
   const thirdGroups = thirds.map((t) => t.group)
   const hostGroups = R32_TEMPLATE.filter(([, away]) => away === 'T').map(([home]) => home[1])
   const assignment =

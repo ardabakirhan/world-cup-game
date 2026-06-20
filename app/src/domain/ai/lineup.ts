@@ -154,7 +154,7 @@ export function buildSide(
     const adjustedPlayer: Player = decay > 0
       ? { ...p, stats: { ...p.stats, overall: Math.max(40, p.stats.overall - decay) } }
       : p
-    starters.push(makeEnginePlayer(adjustedPlayer, st, slots[i].role))
+    starters.push(makeEnginePlayer(adjustedPlayer, st, slots[i].role, slots[i].label))
   })
   const inXI = new Set(ids.filter(Boolean) as string[])
   const bench = effectivePlayers

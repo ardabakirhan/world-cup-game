@@ -4,7 +4,7 @@ import type { Player } from '../data/types'
 import { getTeam } from '../data/teams'
 import { useGame } from '../store/gameStore'
 import { FORMATIONS, FORMATION_KEYS } from '../domain/engine/formations'
-import { positionPenalty } from '../domain/engine/ratings'
+import { positionFitGrade, OVR_PENALTY } from '../domain/positions'
 import { isAvailable, roleScore } from '../domain/ai/lineup'
 import { getNextUserMatch, matchCompetitionLabel } from '../domain/calendar/calendar.engine'
 import { careerDayToDate } from '../domain/calendar/calendar.types'
@@ -87,14 +87,13 @@ export function LineupConfirm() {
     if (st?.injuredUntilDay > g.day) icons += '🚑'
     if (st?.suspendedMatches > 0) icons += '🟥'
     if (st?.fitness < 60) icons += '🟡'
+    const grade = slotIdx !== null ? positionFitGrade(slots[slotIdx].label, p) : 'natural'
     return {
       id: p.id,
       number: p.number,
       label: surname(p.name),
       ovr: p.stats.overall,
-      effOvr: Math.round(
-        p.stats.overall * (slotIdx !== null ? positionPenalty(p.position, slots[slotIdx].role) : 1)
-      ),
+      effOvr: Math.max(40, p.stats.overall - OVR_PENALTY[grade]),
       icons,
       disabled: !isAvailable(p, g.playerStates, g.day),
       avatar: p.avatar,

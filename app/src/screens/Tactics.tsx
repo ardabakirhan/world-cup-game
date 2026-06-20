@@ -4,7 +4,8 @@ import { getTeam } from '../data/teams'
 import type { Player, Position } from '../data/types'
 import { useGame } from '../store/gameStore'
 import { FORMATIONS, FORMATION_KEYS } from '../domain/engine/formations'
-import { makeEnginePlayer, positionPenalty, teamRatings } from '../domain/engine/ratings'
+import { makeEnginePlayer, teamRatings } from '../domain/engine/ratings'
+import { positionFitGrade, OVR_PENALTY } from '../domain/positions'
 import { autoPickXI, isAvailable, roleScore } from '../domain/ai/lineup'
 import { getNextUserMatch } from '../domain/calendar/calendar.engine'
 import type { Mentality, TacticSliders, CornerDelivery, FKRoutine, PenaltyStyle } from '../domain/types'
@@ -73,22 +74,23 @@ export function Tactics() {
   const mentality = g.tactics.mentality ?? 'balanced'
   const tacticPresets = g.tacticPresets ?? [null, null, null]
 
-  const toChip = (p: Player, slotIdx: number | null): ChipData => ({
-    id: p.id,
-    number: p.number,
-    label: surname(p.name),
-    ovr: p.stats.overall,
-    effOvr: Math.round(
-      p.stats.overall * (slotIdx !== null ? positionPenalty(p.position, slots[slotIdx].role) : 1),
-    ),
-    icons: statusIcons(p),
-    disabled: !isAvailable(p, g.playerStates, g.day),
-    avatar: p.avatar,
-    subRole: slotIdx !== null ? (roles[slotIdx] ?? null) : null,
-    isCaptain: g.lineup.captainId === p.id,
-    isViceCaptain: g.lineup.viceCaptainId === p.id,
-    posFit: slotIdx !== null ? positionFit(slots[slotIdx].label, p) : undefined,
-  })
+  const toChip = (p: Player, slotIdx: number | null): ChipData => {
+    const grade = slotIdx !== null ? positionFitGrade(slots[slotIdx].label, p) : 'natural'
+    return {
+      id: p.id,
+      number: p.number,
+      label: surname(p.name),
+      ovr: p.stats.overall,
+      effOvr: Math.max(40, p.stats.overall - OVR_PENALTY[grade]),
+      icons: statusIcons(p),
+      disabled: !isAvailable(p, g.playerStates, g.day),
+      avatar: p.avatar,
+      subRole: slotIdx !== null ? (roles[slotIdx] ?? null) : null,
+      isCaptain: g.lineup.captainId === p.id,
+      isViceCaptain: g.lineup.viceCaptainId === p.id,
+      posFit: slotIdx !== null ? positionFit(slots[slotIdx].label, p) : undefined,
+    }
+  }
 
   const pitchChips: (ChipData | null)[] = slots.map((_, i) => {
     const id = g.lineup.starters[i]
@@ -107,7 +109,7 @@ export function Tactics() {
       .map((id, i) => {
         if (!id) return null
         const p = byId.get(id)
-        return p ? makeEnginePlayer(p, g.playerStates[p.id], slots[i].role) : null
+        return p ? makeEnginePlayer(p, g.playerStates[p.id], slots[i].role, slots[i].label) : null
       })
       .filter((x) => x !== null)
     return teamRatings(xi)

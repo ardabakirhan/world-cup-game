@@ -1,12 +1,16 @@
 import type { GkStats, Player, PlayerStats, Position } from '../../data/types'
 import type { Mentality, PlayerState, Tactics } from '../types'
+import { positionFitGrade, EFF_MULT } from '../positions'
 
 /** A player as the match engine sees him: base stats + live condition. */
 export interface EnginePlayer {
   id: string
   name: string
   position: Position
-  slotRole: Position // role he is fielded in
+  slotRole: Position   // broad role (GK/DF/MF/FW) he is fielded in
+  slotLabel?: string   // specific slot label (RW, CAM, LB, etc.) for detailed OOS penalty
+  positions?: string[] // FC26 detailed position list (positions[0] = primary)
+  primaryPosition?: string
   stats: PlayerStats
   gk: GkStats | null
   form: number
@@ -21,9 +25,16 @@ export interface TeamRatings {
   gk: number
 }
 
-export function makeEnginePlayer(p: Player, st: PlayerState, slotRole: Position): EnginePlayer {
+export function makeEnginePlayer(
+  p: Player,
+  st: PlayerState,
+  slotRole: Position,
+  slotLabel?: string,
+): EnginePlayer {
   return {
-    id: p.id, name: p.name, position: p.position, slotRole,
+    id: p.id, name: p.name, position: p.position, slotRole, slotLabel,
+    positions: p.positions,
+    primaryPosition: p.primaryPosition,
     stats: p.stats, gk: p.gkStats,
     form: st.form, morale: st.morale, fitness: st.fitness,
   }
@@ -58,6 +69,12 @@ export function positionPenalty(natural: Position, slotRole: Position): number {
 }
 
 function positionFactor(p: EnginePlayer): number {
+  // Use detailed FC26 grade when we have the specific slot label + position data
+  if (p.slotLabel && (p.positions?.length || p.primaryPosition)) {
+    const pdata = { position: p.position, positions: p.positions, primaryPosition: p.primaryPosition }
+    return EFF_MULT[positionFitGrade(p.slotLabel, pdata)]
+  }
+  // Broad-role fallback (AI bench players without slotLabel)
   return positionPenalty(p.position, p.slotRole)
 }
 

@@ -1,4 +1,5 @@
 import type { Team } from '../../data/types'
+import { getTeam, teamAvgOverall } from '../../data/teams'
 import type { CalendarWindow, ScheduledMatch, QualGroup, NLGroup, GameDate } from './calendar.types'
 import { dateToCareerDay } from './calendar.types'
 import { WINDOW_DEFS, SUMMER_2027_COMP, windowStartDay } from './competitionCalendar'
@@ -513,5 +514,155 @@ export function getNextMajorTournamentInfo(
     }
   }
   return null
+}
+
+// ------------------------------------------------------------------
+// WC 2026 bracket resolver (career schedule path)
+// Called after every WC group-stage match commit; no-ops until all 72
+// group matches are done, then fills the 16 R32 placeholder entries.
+// ------------------------------------------------------------------
+
+/** Official WC 2026 R32 bracket: index i → id WC2026-R32-(i+1). */
+const WC_R32_TEMPLATE: [string, string][] = [
+  ['2A', '2B'], ['1E', 'T'], ['1F', '2C'], ['1C', '2F'],
+  ['1I', 'T'], ['2E', '2I'], ['1A', 'T'], ['1L', 'T'],
+  ['1D', 'T'], ['1G', 'T'], ['2K', '2L'], ['1B', 'T'],
+  ['1J', '2H'], ['1H', '2J'], ['1K', 'T'], ['2D', '2G'],
+]
+
+/** Backtracking assignment: thirds[i] cannot equal hostGroups[i] (same-group rule). */
+function assignWCThirds(hostGroups: string[], thirdGroups: string[]): Map<string, string> | null {
+  const result = new Map<string, string>()
+  const used = new Set<string>()
+  const solve = (i: number): boolean => {
+    if (i === hostGroups.length) return true
+    for (const tg of thirdGroups) {
+      if (used.has(tg) || tg === hostGroups[i]) continue
+      used.add(tg)
+      result.set(hostGroups[i], tg)
+      if (solve(i + 1)) return true
+      used.delete(tg)
+      result.delete(hostGroups[i])
+    }
+    return false
+  }
+  return solve(0) ? result : null
+}
+
+function wcTeamOvr(teamId: string): number {
+  try { return teamAvgOverall(getTeam(teamId)) } catch { return 0 }
+}
+
+/**
+ * After all WC_2026 group-stage matches have results, fill the 16 R32
+ * placeholder entries (homeId/awayId null → resolved team IDs).
+ *
+ * Ranking criteria for best-8 thirds (FIFA order):
+ *   1. Points  2. Goal difference  3. Goals scored
+ *   4. FIFA ranking (teamAvgOverall proxy — fair-play not stored for AI matches)
+ *
+ * Returns the original schedule reference unchanged if group stage is not
+ * yet complete or the bracket is already filled.
+ */
+export function resolveWC2026Bracket(schedule: ScheduledMatch[]): ScheduledMatch[] {
+  // Already filled?
+  if (schedule.some((m) => m.windowId === 'WC_2026' && m.round === 'R32' && m.homeId !== null)) {
+    return schedule
+  }
+
+  // All group-stage matches must have results
+  const groupMatches = schedule.filter(
+    (m) => m.windowId === 'WC_2026' && m.matchType === 'group',
+  )
+  if (groupMatches.length === 0 || !groupMatches.every((m) => m.result)) return schedule
+
+  // ── Build standings per group ──────────────────────────────────────
+  type Row = { teamId: string; points: number; gd: number; gf: number; ga: number }
+  const standingsMap = new Map<string, Row[]>()
+
+  const groupSet = new Set<string>()
+  for (const m of groupMatches) if (m.group) groupSet.add(m.group)
+
+  for (const group of groupSet) {
+    const gm = groupMatches.filter((m) => m.group === group)
+    const rowMap = new Map<string, Row>()
+
+    for (const m of gm) {
+      if (m.homeId && !rowMap.has(m.homeId)) rowMap.set(m.homeId, { teamId: m.homeId, points: 0, gd: 0, gf: 0, ga: 0 })
+      if (m.awayId && !rowMap.has(m.awayId)) rowMap.set(m.awayId, { teamId: m.awayId, points: 0, gd: 0, gf: 0, ga: 0 })
+    }
+
+    for (const m of gm) {
+      if (!m.result || !m.homeId || !m.awayId) continue
+      const h = rowMap.get(m.homeId)!
+      const a = rowMap.get(m.awayId)!
+      const { homeGoals, awayGoals } = m.result
+      h.gf += homeGoals; h.ga += awayGoals; h.gd = h.gf - h.ga
+      a.gf += awayGoals; a.ga += homeGoals; a.gd = a.gf - a.ga
+      if (homeGoals > awayGoals) h.points += 3
+      else if (awayGoals > homeGoals) a.points += 3
+      else { h.points++; a.points++ }
+    }
+
+    const list = [...rowMap.values()].sort((x, y) =>
+      y.points - x.points || y.gd - x.gd || y.gf - x.gf ||
+      wcTeamOvr(y.teamId) - wcTeamOvr(x.teamId) ||
+      x.teamId.localeCompare(y.teamId),
+    )
+    standingsMap.set(group, list)
+  }
+
+  // ── Rank best 8 third-place teams ────────────────────────────────
+  const allThirds = [...standingsMap.entries()]
+    .filter(([, rows]) => rows.length >= 3)
+    .map(([group, rows]) => ({ group, row: rows[2] }))
+
+  allThirds.sort((a, b) =>
+    b.row.points - a.row.points || b.row.gd - a.row.gd || b.row.gf - a.row.gf ||
+    wcTeamOvr(b.row.teamId) - wcTeamOvr(a.row.teamId) ||
+    a.group.localeCompare(b.group),
+  )
+
+  const best8 = allThirds.slice(0, 8)
+  const thirdGroups = best8.map((t) => t.group)
+
+  // ── Assign thirds to T-slots (no same-group as their group winner) ─
+  const hostGroups = WC_R32_TEMPLATE
+    .filter(([, away]) => away === 'T')
+    .map(([home]) => home[1])
+
+  const assignment =
+    assignWCThirds(hostGroups, thirdGroups) ??
+    // Fallback: ignore same-group constraint (mathematically cannot happen with 8 of 12)
+    new Map(hostGroups.map((h, i) => [h, thirdGroups[i]]))
+
+  // ── Fill R32 placeholder slots ────────────────────────────────────
+  const updated = structuredClone(schedule) as ScheduledMatch[]
+
+  WC_R32_TEMPLATE.forEach(([home, away], idx) => {
+    const match = updated.find((m) => m.id === `WC2026-R32-${idx + 1}`)
+    if (!match) return
+
+    const homeGroup  = home[1]
+    const homeRank   = Number(home[0]) - 1
+    const homeRows   = standingsMap.get(homeGroup)
+    match.homeId     = homeRows?.[homeRank]?.teamId ?? null
+    match.slotHome   = home
+
+    if (away === 'T') {
+      const thirdGroup = assignment.get(homeGroup) ?? thirdGroups[0]
+      const thirdRows  = standingsMap.get(thirdGroup)
+      match.awayId   = thirdRows?.[2]?.teamId ?? null
+      match.slotAway = `3${thirdGroup}`
+    } else {
+      const awayGroup = away[1]
+      const awayRank  = Number(away[0]) - 1
+      const awayRows  = standingsMap.get(awayGroup)
+      match.awayId   = awayRows?.[awayRank]?.teamId ?? null
+      match.slotAway = away
+    }
+  })
+
+  return updated
 }
 export type { GameDate }

@@ -27,7 +27,7 @@ import type {
 } from '../domain/types'
 import { achievementLevel, expectationLevel, FACILITY_COST, MENTALITY_SLIDER_PRESETS, MENTALITY_TO_NUM } from '../domain/types'
 import { teamAvgOverall } from '../data/teams'
-import { generateCareerCalendar, simulateWindowMatches, getNextUserMatch, getNextMajorTournamentInfo } from '../domain/calendar/calendar.engine'
+import { generateCareerCalendar, simulateWindowMatches, getNextUserMatch, getNextMajorTournamentInfo, resolveWC2026Bracket } from '../domain/calendar/calendar.engine'
 import { CAREER_EPOCH, careerDayToDate } from '../domain/calendar/calendar.types'
 import { checkFiringAfterCompetition, calcCompetitionGrade } from '../domain/calendar/qualification'
 import { groupStandings } from '../domain/tournament/standings'
@@ -1034,14 +1034,34 @@ export const useGame = create<Store>()(
         const isFriendly = (targetMatch as { matchType?: string }).matchType === 'friendly'
         const budgetGain  = userWon ? (isFriendly ? 100_000 : 150_000) : 0
 
+        // After a WC 2026 group-stage match, try to fill the R32 bracket.
+        // resolveWC2026Bracket is a no-op until all 72 group matches have results.
+        const isWCGroup = sm?.windowId === 'WC_2026' && sm?.matchType === 'group'
+        const resolvedSchedule = isWCGroup ? resolveWC2026Bracket(schedule) : schedule
+
         set({
           playerStates: states,
           fixtures,
-          schedule,
+          schedule: resolvedSchedule,
           inbox: [...newMsgs, ...(g.inbox ?? [])].slice(0, 40),
           trainingBoost: { attack: 0, defense: 0, setpieces: 0 },
           federationBudget: g.federationBudget + budgetGain,
         })
+
+        // Career-mode WC elimination: bracket just filled → check if user advances
+        if (isWCGroup && !g.eliminated && g.teamId) {
+          const bracketFilled = resolvedSchedule.some(
+            (m) => m.windowId === 'WC_2026' && m.round === 'R32' && m.homeId !== null,
+          )
+          if (bracketFilled) {
+            const userInR32 = resolvedSchedule.some(
+              (m) => m.round === 'R32' &&
+                (m.homeId === g.teamId || m.awayId === g.teamId),
+            )
+            if (!userInR32) set({ eliminated: true, eliminatedRound: 'G3' })
+          }
+        }
+
         // Update familiarity after match
         get().gainFamiliarityAfterMatch(fixtureId)
         g.simulateDayMatches(fixtureId)
