@@ -30,7 +30,7 @@ export const PRESS_QUESTIONS: Record<PressCategory, PressQuestion[]> = {
     {
       question: 'Rakip güçlüydü. Nasıl üstün geldiniz?',
       options: [
-        { text: '"Defansif bloğumuz muhtesemdi."', effect: { pressRelation: 1 } },
+        { text: '"Defansif bloğumuz müthişti."', effect: { pressRelation: 1 } },
         { text: '"Oyuncularım canlarını dişlerine taktı."', effect: { teamMorale: 1 } },
         { text: '"Rakibi küçümsemiyoruz, ama biz daha hazırlıklıydık."', effect: { pressRelation: 1 } },
       ],
@@ -44,9 +44,9 @@ export const PRESS_QUESTIONS: Record<PressCategory, PressQuestion[]> = {
       ],
     },
     {
-      question: '[BENCHED_STAR] sahaydaydı bugün yok. Neden?',
+      question: '[BENCHED_STAR] bugün sahada yoktu. Neden?',
       options: [
-        { text: '"Taktik bir tercihtir, her oyuncuyu kullanırız."', effect: { pressRelation: 1 } },
+        { text: '"Taktik bir tercih, her oyuncuya ihtiyacımız var."', effect: { pressRelation: 1 } },
         { text: '"Rotasyon yaptım, turnuva uzun."', effect: { pressRelation: 2 } },
         { text: '"Bu konuyu soyunma odasında konuşuruz."', effect: { pressRelation: 0 } },
       ],
@@ -98,7 +98,7 @@ export const PRESS_QUESTIONS: Record<PressCategory, PressQuestion[]> = {
       question: '[BENCHED_STAR] oynamadı. Bu yenilgiyle bağlantılı mı?',
       options: [
         { text: '"Tamamen taktik bir karardı."', effect: { pressRelation: 0 } },
-        { text: '"O oynayanlar elimden geleni yaptı."', effect: { teamMorale: 1, pressRelation: -1 } },
+        { text: '"Oynayanlar ellerinden geleni yaptı."', effect: { teamMorale: 1, pressRelation: -1 } },
         { text: '"Bu soruyu geçiyorum."', effect: { pressRelation: -1 } },
       ],
     },
