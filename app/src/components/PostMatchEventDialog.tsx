@@ -7,6 +7,7 @@ import { Avatar } from './Avatar'
 
 export function PostMatchEventDialog() {
   const teamId = useGame((s) => s.teamId)
+  const lang = useGame((s) => s.lang)
   const pendingPostMatchEvents = useGame((s) => s.pendingPostMatchEvents)
   const resolvePostMatchEvent = useGame((s) => s.resolvePostMatchEvent)
 
@@ -22,7 +23,8 @@ export function PostMatchEventDialog() {
   const player = team.players.find((p) => p.id === ev.playerId)
   if (!player) return null
 
-  const dialogue = interaction.dialogue.replace(/\[PLAYER\]/g, player.name)
+  const isTR = lang === 'tr'
+  const dialogue = (isTR ? interaction.dialogue.tr : interaction.dialogue.en).replace(/\[PLAYER\]/g, player.name)
 
   return (
     <Modal open>
@@ -46,7 +48,7 @@ export function PostMatchEventDialog() {
               padding: '2px 6px',
             }}
           >
-            {pendingPostMatchEvents.length} olay
+            {pendingPostMatchEvents.length} {isTR ? 'olay' : 'event'}{pendingPostMatchEvents.length !== 1 && !isTR ? 's' : ''}
           </div>
         )}
       </div>
@@ -74,7 +76,7 @@ export function PostMatchEventDialog() {
             onClick={() => resolvePostMatchEvent(i)}
             style={{ fontSize: 13 }}
           >
-            {opt.text}
+            {isTR ? opt.text.tr : opt.text.en}
           </button>
         ))}
       </div>

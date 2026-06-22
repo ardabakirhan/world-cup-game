@@ -493,7 +493,7 @@ function pickPressQIndices(
   const pool = PRESS_QUESTIONS[category]
   const eligible = pool
     .map((q, i) => ({ q, i }))
-    .filter(({ q }) => hasBenchedStar || !BENCHED_STAR_RE.test(q.question))
+    .filter(({ q }) => hasBenchedStar || !BENCHED_STAR_RE.test(q.question.tr))
   // Fisher-Yates shuffle of eligible indices
   for (let i = eligible.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));

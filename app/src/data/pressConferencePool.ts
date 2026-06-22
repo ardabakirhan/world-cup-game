@@ -1,9 +1,9 @@
-/** Pre-written Turkish press conference question pool. */
+/** Press conference question pool — TR and EN questions/options. */
 
 export type PressCategory = 'afterWin' | 'afterLoss' | 'afterDraw' | 'afterBigWin'
 
 export interface PressChoice {
-  text: string
+  text: { tr: string; en: string }
   effect: {
     pressRelation?: number
     teamMorale?: number
@@ -12,7 +12,7 @@ export interface PressChoice {
 }
 
 export interface PressQuestion {
-  question: string
+  question: { tr: string; en: string }
   /** [BENCHED_STAR] and [DROPPED_PLAYER] replaced at render time. */
   options: PressChoice[]
 }
@@ -20,244 +20,331 @@ export interface PressQuestion {
 export const PRESS_QUESTIONS: Record<PressCategory, PressQuestion[]> = {
   afterWin: [
     {
-      question: 'Güzel galibiyet. Bu performansın sırrı ne?',
+      question: {
+        tr: 'Güzel galibiyet. Bu performansın sırrı ne?',
+        en: 'A fine win. What was the secret behind that performance?',
+      },
       options: [
-        { text: '"Sırrı yok, çok çalıştık."', effect: { pressRelation: 1 } },
-        { text: '"Taktiksel olarak rakibi okuduk."', effect: { boardConfidence: 1 } },
-        { text: '"Bugün biraz şans da vardı tabii."', effect: { pressRelation: 2, boardConfidence: -1 } },
+        { text: { tr: '"Sırrı yok, çok çalıştık."', en: '"No secret — we just worked hard."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Taktiksel olarak rakibi okuduk."', en: '"We read the opposition tactically."' }, effect: { boardConfidence: 1 } },
+        { text: { tr: '"Bugün biraz şans da vardı tabii."', en: '"There was a bit of luck today, to be fair."' }, effect: { pressRelation: 2, boardConfidence: -1 } },
       ],
     },
     {
-      question: 'Rakip güçlüydü. Nasıl üstün geldiniz?',
+      question: {
+        tr: 'Rakip güçlüydü. Nasıl üstün geldiniz?',
+        en: 'The opponents were strong. How did you come out on top?',
+      },
       options: [
-        { text: '"Defansif bloğumuz müthişti."', effect: { pressRelation: 1 } },
-        { text: '"Oyuncularım canlarını dişlerine taktı."', effect: { teamMorale: 1 } },
-        { text: '"Rakibi küçümsemiyoruz, ama biz daha hazırlıklıydık."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Defansif bloğumuz müthişti."', en: '"Our defensive shape was outstanding."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Oyuncularım canlarını dişlerine taktı."', en: '"My players gave everything they had."' }, effect: { teamMorale: 1 } },
+        { text: { tr: '"Rakibi küçümsemiyoruz, ama biz daha hazırlıklıydık."', en: '"We respect them, but we were better prepared."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: 'Bu galibiyet hedeflerinizi değiştiriyor mu?',
+      question: {
+        tr: 'Bu galibiyet hedeflerinizi değiştiriyor mu?',
+        en: 'Does this win change your ambitions?',
+      },
       options: [
-        { text: '"Maç maç bakıyoruz, daha erken."', effect: { pressRelation: 1 } },
-        { text: '"Neden değiştirsin? Şampiyonluğa gidiyoruz."', effect: { boardConfidence: 2, teamMorale: 1 } },
-        { text: '"Odaklanmaya devam ediyoruz."', effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Maç maç bakıyoruz, daha erken."', en: '"We take it game by game — it\'s too early to say."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Neden değiştirsin? Şampiyonluğa gidiyoruz."', en: '"Why would it? We\'re going for the title."' }, effect: { boardConfidence: 2, teamMorale: 1 } },
+        { text: { tr: '"Odaklanmaya devam ediyoruz."', en: '"We stay focused and keep going."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
       ],
     },
     {
-      question: '[BENCHED_STAR] bugün sahada yoktu. Neden?',
+      question: {
+        tr: '[BENCHED_STAR] bugün sahada yoktu. Neden?',
+        en: "[BENCHED_STAR] wasn't in the starting XI today. Why?",
+      },
       options: [
-        { text: '"Taktik bir tercih, her oyuncuya ihtiyacımız var."', effect: { pressRelation: 1 } },
-        { text: '"Rotasyon yaptım, turnuva uzun."', effect: { pressRelation: 2 } },
-        { text: '"Bu konuyu soyunma odasında konuşuruz."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Taktik bir tercih, her oyuncuya ihtiyacımız var."', en: '"A tactical choice — I need every player in this squad."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Rotasyon yaptım, turnuva uzun."', en: '"I rotated — it\'s a long tournament."' }, effect: { pressRelation: 2 } },
+        { text: { tr: '"Bu konuyu soyunma odasında konuşuruz."', en: '"That\'s a conversation for the dressing room."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Taraftarlar harika bir atmosfer yarattı. Ne hissettiniz?',
+      question: {
+        tr: 'Taraftarlar harika bir atmosfer yarattı. Ne hissettiniz?',
+        en: 'The fans created an incredible atmosphere. How did that feel?',
+      },
       options: [
-        { text: '"12. oyuncumuz onlar, çok teşekkürler."', effect: { pressRelation: 2, teamMorale: 1 } },
-        { text: '"Onlar için oynadık bugün."', effect: { pressRelation: 1, teamMorale: 1 } },
-        { text: '"Her zaman güç veriyorlar bize."', effect: { pressRelation: 1 } },
+        { text: { tr: '"12. oyuncumuz onlar, çok teşekkürler."', en: '"They\'re our twelfth man — huge thanks to them."' }, effect: { pressRelation: 2, teamMorale: 1 } },
+        { text: { tr: '"Onlar için oynadık bugün."', en: '"We played for them today."' }, effect: { pressRelation: 1, teamMorale: 1 } },
+        { text: { tr: '"Her zaman güç veriyorlar bize."', en: '"They always give us a lift."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: 'Maçta öne çıkan oyuncu kimdi?',
+      question: {
+        tr: 'Maçta öne çıkan oyuncu kimdi?',
+        en: 'Who stood out for you in the match?',
+      },
       options: [
-        { text: '"Hepsinden söz etmek isterim. Takım olarak kazandık."', effect: { teamMorale: 2, pressRelation: 1 } },
-        { text: '"Kalecimiz bugün müthişti."', effect: { teamMorale: 1, pressRelation: 1 } },
-        { text: '"Birini öne çıkarmak istemiyorum."', effect: { pressRelation: -1 } },
+        { text: { tr: '"Hepsinden söz etmek isterim. Takım olarak kazandık."', en: '"I\'d mention all of them — we won as a team."' }, effect: { teamMorale: 2, pressRelation: 1 } },
+        { text: { tr: '"Kalecimiz bugün müthişti."', en: '"Our goalkeeper was outstanding today."' }, effect: { teamMorale: 1, pressRelation: 1 } },
+        { text: { tr: '"Birini öne çıkarmak istemiyorum."', en: '"I don\'t want to single anyone out."' }, effect: { pressRelation: -1 } },
       ],
     },
     {
-      question: 'Önümüzdeki rakip için hazırlık nasıl?',
+      question: {
+        tr: 'Önümüzdeki rakip için hazırlık nasıl?',
+        en: 'How is preparation going for the next opponent?',
+      },
       options: [
-        { text: '"Şimdiden başladık analiz etmeye."', effect: { boardConfidence: 1 } },
-        { text: '"Bu geceyi kutlayalım, yarın işe koyuluruz."', effect: { pressRelation: 1 } },
-        { text: '"Her rakibe saygıyla yaklaşıyoruz."', effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Şimdiden başladık analiz etmeye."', en: '"We\'ve already started our analysis."' }, effect: { boardConfidence: 1 } },
+        { text: { tr: '"Bu geceyi kutlayalım, yarın işe koyuluruz."', en: '"Let\'s enjoy tonight — we get back to work tomorrow."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Her rakibe saygıyla yaklaşıyoruz."', en: '"We approach every opponent with respect."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
       ],
     },
     {
-      question: 'Devre arasında ne söylediniz oyunculara?',
+      question: {
+        tr: 'Devre arasında ne söylediniz oyunculara?',
+        en: 'What did you say to the players at half-time?',
+      },
       options: [
-        { text: '"Doğru ayarlamaları yaptık ve işe yaradı."', effect: { boardConfidence: 2, pressRelation: 1 } },
-        { text: '"Oyuncularıma güveniyorum, onlar buldu çözümü."', effect: { teamMorale: 1, pressRelation: 1 } },
-        { text: '"Soyunma odası sırrı kalır."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Doğru ayarlamaları yaptık ve işe yaradı."', en: '"We made the right adjustments and they worked."' }, effect: { boardConfidence: 2, pressRelation: 1 } },
+        { text: { tr: '"Oyuncularıma güveniyorum, onlar buldu çözümü."', en: '"I trust my players — they found the solution themselves."' }, effect: { teamMorale: 1, pressRelation: 1 } },
+        { text: { tr: '"Soyunma odası sırrı kalır."', en: '"What\'s said in the dressing room stays there."' }, effect: { pressRelation: 1 } },
       ],
     },
   ],
 
   afterLoss: [
     {
-      question: '3-0\'dı. Ne yanlış gitti bugün?',
+      question: {
+        tr: '3-0\'dı. Ne yanlış gitti bugün?',
+        en: 'It finished 3-0. What went wrong today?',
+      },
       options: [
-        { text: '"Savunmamız çöktü, kabul ediyorum."', effect: { pressRelation: 1, boardConfidence: -1 } },
-        { text: '"Rakip bugün her şeyi doğru yaptı."', effect: { pressRelation: 0 } },
-        { text: '"Şu an analiz etmek erken."', effect: { pressRelation: -2 } },
+        { text: { tr: '"Savunmamız çöktü, kabul ediyorum."', en: '"Our defence collapsed — I accept that."' }, effect: { pressRelation: 1, boardConfidence: -1 } },
+        { text: { tr: '"Rakip bugün her şeyi doğru yaptı."', en: '"The opposition did everything right today."' }, effect: { pressRelation: 0 } },
+        { text: { tr: '"Şu an analiz etmek erken."', en: '"It\'s too early to analyse right now."' }, effect: { pressRelation: -2 } },
       ],
     },
     {
-      question: '[BENCHED_STAR] oynamadı. Bu yenilgiyle bağlantılı mı?',
+      question: {
+        tr: '[BENCHED_STAR] oynamadı. Bu yenilgiyle bağlantılı mı?',
+        en: "[BENCHED_STAR] didn't play. Was that connected to the defeat?",
+      },
       options: [
-        { text: '"Tamamen taktik bir karardı."', effect: { pressRelation: 0 } },
-        { text: '"Oynayanlar ellerinden geleni yaptı."', effect: { teamMorale: 1, pressRelation: -1 } },
-        { text: '"Bu soruyu geçiyorum."', effect: { pressRelation: -1 } },
+        { text: { tr: '"Tamamen taktik bir karardı."', en: '"It was entirely a tactical decision."' }, effect: { pressRelation: 0 } },
+        { text: { tr: '"Oynayanlar ellerinden geleni yaptı."', en: '"The players who were out there gave their all."' }, effect: { teamMorale: 1, pressRelation: -1 } },
+        { text: { tr: '"Bu soruyu geçiyorum."', en: '"I\'ll pass on that question."' }, effect: { pressRelation: -1 } },
       ],
     },
     {
-      question: 'Taraftarlar hayal kırıklığı içinde ayrıldı. Onlara ne söylemek istersiniz?',
+      question: {
+        tr: 'Taraftarlar hayal kırıklığı içinde ayrıldı. Onlara ne söylemek istersiniz?',
+        en: 'The fans left disappointed. What would you like to say to them?',
+      },
       options: [
-        { text: '"Özür dileriz. Bir dahakine farklı olacak."', effect: { pressRelation: 2 } },
-        { text: '"Destekleri her zaman güç veriyor."', effect: { pressRelation: 1 } },
-        { text: '"Biz de istedik ama olmadı."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Özür dileriz. Bir dahakine farklı olacak."', en: '"We\'re sorry. It will be different next time."' }, effect: { pressRelation: 2 } },
+        { text: { tr: '"Destekleri her zaman güç veriyor."', en: '"Their support always means so much to us."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Biz de istedik ama olmadı."', en: '"We wanted it too — it just didn\'t happen."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Rakibin golü hangi anda oyunu kırdı?',
+      question: {
+        tr: 'Rakibin golü hangi anda oyunu kırdı?',
+        en: "Which goal broke the game open?",
+      },
       options: [
-        { text: '"İlk gol sonrası moralimiz bozuldu."', effect: { pressRelation: 1 } },
-        { text: '"Biz fırsatları değerlendiremedik, asıl sorun bu."', effect: { pressRelation: 2 } },
-        { text: '"Rakip her alanda üstündü bugün."', effect: { pressRelation: 0 } },
+        { text: { tr: '"İlk gol sonrası moralimiz bozuldu."', en: '"Our heads dropped after the first goal."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Biz fırsatları değerlendiremedik, asıl sorun bu."', en: '"We didn\'t take our chances — that\'s the real issue."' }, effect: { pressRelation: 2 } },
+        { text: { tr: '"Rakip her alanda üstündü bugün."', en: '"The opposition were better in every area today."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Kadro değişikliği olacak mı bir sonraki maçta?',
+      question: {
+        tr: 'Kadro değişikliği olacak mı bir sonraki maçta?',
+        en: 'Will you make changes to the squad for the next match?',
+      },
       options: [
-        { text: '"Değerlendirme yapacağız."', effect: { pressRelation: 1, boardConfidence: -1 } },
-        { text: '"Oyuncularımıza güveniyorum."', effect: { pressRelation: 0, teamMorale: 1 } },
-        { text: '"Her zaman en iyi 11\'i seçerim."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Değerlendirme yapacağız."', en: '"We\'ll assess everything."' }, effect: { pressRelation: 1, boardConfidence: -1 } },
+        { text: { tr: '"Oyuncularımıza güveniyorum."', en: '"I believe in my players."' }, effect: { pressRelation: 0, teamMorale: 1 } },
+        { text: { tr: '"Her zaman en iyi 11\'i seçerim."', en: '"I always pick the best eleven."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: 'Nasıl toparlanacaksınız?',
+      question: {
+        tr: 'Nasıl toparlanacaksınız?',
+        en: 'How will you bounce back from this?',
+      },
       options: [
-        { text: '"Analiz edip daha güçlü geleceğiz."', effect: { boardConfidence: 1, pressRelation: 1 } },
-        { text: '"Takımımın karakterine güveniyorum."', effect: { teamMorale: 1, pressRelation: 1 } },
-        { text: '"Şu an bunu konuşmak zor."', effect: { pressRelation: -1 } },
+        { text: { tr: '"Analiz edip daha güçlü geleceğiz."', en: '"We\'ll analyse it and come back stronger."' }, effect: { boardConfidence: 1, pressRelation: 1 } },
+        { text: { tr: '"Takımımın karakterine güveniyorum."', en: '"I believe in the character of this team."' }, effect: { teamMorale: 1, pressRelation: 1 } },
+        { text: { tr: '"Şu an bunu konuşmak zor."', en: '"It\'s hard to talk about it right now."' }, effect: { pressRelation: -1 } },
       ],
     },
     {
-      question: 'İlk yarı çok kötüydü. Devre arası ne söylediniz?',
+      question: {
+        tr: 'İlk yarı çok kötüydü. Devre arası ne söylediniz?',
+        en: 'The first half was very poor. What did you say at the break?',
+      },
       options: [
-        { text: '"Doğru analiz yapamadık, kabul."', effect: { pressRelation: 1 } },
-        { text: '"Rakip çok iyi çıktı, şans da onlardaydı."', effect: { pressRelation: 0 } },
-        { text: '"Düzelttik ama geç kaldık maalesef."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Doğru analiz yapamadık, kabul."', en: '"We didn\'t read the game well enough — I admit that."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Rakip çok iyi çıktı, şans da onlardaydı."', en: '"The opposition came out strong and luck was on their side."' }, effect: { pressRelation: 0 } },
+        { text: { tr: '"Düzelttik ama geç kaldık maalesef."', en: '"We corrected it but unfortunately it was too late."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: 'Kendinizi sorguluyor musunuz hoca?',
+      question: {
+        tr: 'Kendinizi sorguluyor musunuz hoca?',
+        en: 'Are you questioning yourself, manager?',
+      },
       options: [
-        { text: '"Her yenilginin ardından sorgulanmak gerekir."', effect: { pressRelation: 2 } },
-        { text: '"Sürece güveniyorum."', effect: { pressRelation: 0, boardConfidence: 1 } },
-        { text: '"Tek bir maç her şeyi değiştirmez."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Her yenilginin ardından sorgulanmak gerekir."', en: '"You have to ask questions of yourself after every defeat."' }, effect: { pressRelation: 2 } },
+        { text: { tr: '"Sürece güveniyorum."', en: '"I trust the process."' }, effect: { pressRelation: 0, boardConfidence: 1 } },
+        { text: { tr: '"Tek bir maç her şeyi değiştirmez."', en: '"One match doesn\'t change everything."' }, effect: { pressRelation: 0 } },
       ],
     },
   ],
 
   afterDraw: [
     {
-      question: 'Beraberlik yeterliydi sizin için?',
+      question: {
+        tr: 'Beraberlik yeterliydi sizin için?',
+        en: 'Was a draw enough for you?',
+      },
       options: [
-        { text: '"Dürüst olacağım: kazanmak isterdik."', effect: { pressRelation: 1 } },
-        { text: '"Bu rakibe karşı puan almak önemliydi."', effect: { pressRelation: 1, boardConfidence: 1 } },
-        { text: '"Verdiğimizi aldık bugün."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Dürüst olacağım: kazanmak isterdik."', en: '"I\'ll be honest — we wanted the win."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Bu rakibe karşı puan almak önemliydi."', en: '"Taking a point against this team was important."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Verdiğimizi aldık bugün."', en: '"We got what we deserved today."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Gol fırsatları harcandı. Niçin?',
+      question: {
+        tr: 'Gol fırsatları harcandı. Niçin?',
+        en: 'Chances were squandered. Why?',
+      },
       options: [
-        { text: '"Şans bugün yüzümüze gülmedi."', effect: { pressRelation: 0 } },
-        { text: '"Hücum etkinliğimizi artıracağız."', effect: { pressRelation: 1, boardConfidence: 1 } },
-        { text: '"Rakip kalecisi iyi oynadı."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Şans bugün yüzümüze gülmedi."', en: '"Luck wasn\'t on our side today."' }, effect: { pressRelation: 0 } },
+        { text: { tr: '"Hücum etkinliğimizi artıracağız."', en: '"We\'ll improve our attacking efficiency."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Rakip kalecisi iyi oynadı."', en: '"Their goalkeeper played well."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: '[BENCHED_STAR] yoktu. Sonucu etkiliyor muydu?',
+      question: {
+        tr: '[BENCHED_STAR] yoktu. Sonucu etkiliyor muydu?',
+        en: "[BENCHED_STAR] was absent. Did that affect the result?",
+      },
       options: [
-        { text: '"Taktik tercihtir, bu kadar."', effect: { pressRelation: 1 } },
-        { text: '"Oynayanlar ellerinden geleni yaptı."', effect: { teamMorale: 1, pressRelation: 0 } },
-        { text: '"Bu soruyu geçiyorum."', effect: { pressRelation: -1 } },
+        { text: { tr: '"Taktik tercihtir, bu kadar."', en: '"It\'s a tactical choice — simple as that."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Oynayanlar ellerinden geleni yaptı."', en: '"The players on the pitch gave their all."' }, effect: { teamMorale: 1, pressRelation: 0 } },
+        { text: { tr: '"Bu soruyu geçiyorum."', en: '"I\'ll pass on that one."' }, effect: { pressRelation: -1 } },
       ],
     },
     {
-      question: 'Grupta durumunuz nasıl?',
+      question: {
+        tr: 'Grupta durumunuz nasıl?',
+        en: 'How do you see your group standings?',
+      },
       options: [
-        { text: '"İyi konumdayız, devam."', effect: { boardConfidence: 1, pressRelation: 1 } },
-        { text: '"Her puan önemli, kazanmaya devam."', effect: { pressRelation: 1 } },
-        { text: '"Hesapları maç bittikçe yaparız."', effect: { pressRelation: 0 } },
+        { text: { tr: '"İyi konumdayız, devam."', en: '"We\'re in a good position — we push on."' }, effect: { boardConfidence: 1, pressRelation: 1 } },
+        { text: { tr: '"Her puan önemli, kazanmaya devam."', en: '"Every point matters — we keep winning."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Hesapları maç bittikçe yaparız."', en: '"We\'ll do the maths as matches are played."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'İkinci yarı daha iyi oynadınız. Devre arasında ne değiştirdiniz?',
+      question: {
+        tr: 'İkinci yarı daha iyi oynadınız. Devre arasında ne değiştirdiniz?',
+        en: 'You were much better in the second half. What changed at the break?',
+      },
       options: [
-        { text: '"Baskı kurmalarını istedim."', effect: { boardConfidence: 1 } },
-        { text: '"Oyuncularımı motive ettim."', effect: { teamMorale: 1, pressRelation: 1 } },
-        { text: '"Detayları paylaşmam."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Baskı kurmalarını istedim."', en: '"I asked them to press higher."' }, effect: { boardConfidence: 1 } },
+        { text: { tr: '"Oyuncularımı motive ettim."', en: '"I motivated the players."' }, effect: { teamMorale: 1, pressRelation: 1 } },
+        { text: { tr: '"Detayları paylaşmam."', en: '"I don\'t share the details."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Bu tempoyla sonuç alınabilir mi?',
+      question: {
+        tr: 'Bu tempoyla sonuç alınabilir mi?',
+        en: 'Can you get results at this level of performance?',
+      },
       options: [
-        { text: '"İnancımı kaybetmiyorum."', effect: { boardConfidence: 1, pressRelation: 1 } },
-        { text: '"İyileştirme alanlarımız var."', effect: { pressRelation: 1 } },
-        { text: '"Takım çalışıyor, bu önemli."', effect: { pressRelation: 0 } },
+        { text: { tr: '"İnancımı kaybetmiyorum."', en: '"I\'m not losing faith."' }, effect: { boardConfidence: 1, pressRelation: 1 } },
+        { text: { tr: '"İyileştirme alanlarımız var."', en: '"There are areas we need to improve."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Takım çalışıyor, bu önemli."', en: '"The team is working hard — that matters."' }, effect: { pressRelation: 0 } },
       ],
     },
   ],
 
   afterBigWin: [
     {
-      question: 'Büyük galibiyet! Artık şampiyonluk konuşulur mu?',
+      question: {
+        tr: 'Büyük galibiyet! Artık şampiyonluk konuşulur mu?',
+        en: "What a win! Can we start talking about the title now?",
+      },
       options: [
-        { text: '"Maç maç bakıyoruz, hâlâ erken."', effect: { pressRelation: 1 } },
-        { text: '"Neden konuşulmasın? Gidiyoruz!"', effect: { boardConfidence: 2, pressRelation: 1, teamMorale: 1 } },
-        { text: '"Erken konuşmak istemiyorum."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Maç maç bakıyoruz, hâlâ erken."', en: '"We\'re taking it game by game — still too early."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Neden konuşulmasın? Gidiyoruz!"', en: '"Why not? We\'re going for it!"' }, effect: { boardConfidence: 2, pressRelation: 1, teamMorale: 1 } },
+        { text: { tr: '"Erken konuşmak istemiyorum."', en: '"I don\'t want to talk about it yet."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Bu kadar gol atılması nasıl bir duygu?',
+      question: {
+        tr: 'Bu kadar gol atılması nasıl bir duygu?',
+        en: 'What does it feel like to score so many goals?',
+      },
       options: [
-        { text: '"Harika, hücum etkinliğimiz tepedeydi."', effect: { pressRelation: 1, teamMorale: 1 } },
-        { text: '"Oyuncularım bugün rüzgar gibiydi."', effect: { teamMorale: 2, pressRelation: 1 } },
-        { text: '"Çok istedik ve yaptık."', effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Harika, hücum etkinliğimiz tepedeydi."', en: '"Brilliant — our attacking efficiency was at its peak."' }, effect: { pressRelation: 1, teamMorale: 1 } },
+        { text: { tr: '"Oyuncularım bugün rüzgar gibiydi."', en: '"My players were like the wind today."' }, effect: { teamMorale: 2, pressRelation: 1 } },
+        { text: { tr: '"Çok istedik ve yaptık."', en: '"We really wanted it — and we delivered."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
       ],
     },
     {
-      question: 'Rakip bu kadar gol yedi. Ona acıdınız mı?',
+      question: {
+        tr: 'Rakip bu kadar gol yedi. Ona acıdınız mı?',
+        en: 'The opposition conceded a lot. Did you feel any sympathy?',
+      },
       options: [
-        { text: '"Futbolda bu olabiliyor."', effect: { pressRelation: 1 } },
-        { text: '"Rakibe saygım var, bu futbol."', effect: { pressRelation: 2 } },
-        { text: '"Biz sadece oynamak zorundaydık."', effect: { pressRelation: 0 } },
+        { text: { tr: '"Futbolda bu olabiliyor."', en: '"It happens in football."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Rakibe saygım var, bu futbol."', en: '"I have respect for them — this is football."' }, effect: { pressRelation: 2 } },
+        { text: { tr: '"Biz sadece oynamak zorundaydık."', en: '"We just had to play our game."' }, effect: { pressRelation: 0 } },
       ],
     },
     {
-      question: 'Bu skor takımın özgüvenine ne katacak?',
+      question: {
+        tr: 'Bu skor takımın özgüvenine ne katacak?',
+        en: "What will this scoreline do for the team's confidence?",
+      },
       options: [
-        { text: '"Her şeyi katacak. Biz güçlüyüz."', effect: { teamMorale: 2, boardConfidence: 2, pressRelation: 1 } },
-        { text: '"Motivasyon arttı ama dikkatli kalacağız."', effect: { pressRelation: 1, teamMorale: 1 } },
-        { text: '"Bir maç her şeyi değiştirmez."', effect: { pressRelation: 1 } },
+        { text: { tr: '"Her şeyi katacak. Biz güçlüyüz."', en: '"Everything. We are strong."' }, effect: { teamMorale: 2, boardConfidence: 2, pressRelation: 1 } },
+        { text: { tr: '"Motivasyon arttı ama dikkatli kalacağız."', en: '"Motivation is up but we\'ll stay focused."' }, effect: { pressRelation: 1, teamMorale: 1 } },
+        { text: { tr: '"Bir maç her şeyi değiştirmez."', en: '"One match doesn\'t change everything."' }, effect: { pressRelation: 1 } },
       ],
     },
     {
-      question: 'Bu takımı bu kadar güçlü yapan ne?',
+      question: {
+        tr: 'Bu takımı bu kadar güçlü yapan ne?',
+        en: 'What makes this team so strong?',
+      },
       options: [
-        { text: '"Birlik, baskı ve hız."', effect: { pressRelation: 1, boardConfidence: 1 } },
-        { text: '"Takım kimyamız çok iyi şu an."', effect: { teamMorale: 1, pressRelation: 1 } },
-        { text: '"Her departman bugün mükemmeldi."', effect: { pressRelation: 2 } },
+        { text: { tr: '"Birlik, baskı ve hız."', en: '"Unity, pressing, and pace."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Takım kimyamız çok iyi şu an."', en: '"Our team chemistry is excellent right now."' }, effect: { teamMorale: 1, pressRelation: 1 } },
+        { text: { tr: '"Her departman bugün mükemmeldi."', en: '"Every department was excellent today."' }, effect: { pressRelation: 2 } },
       ],
     },
     {
-      question: 'Dünya bu maçı konuşacak. Yorumunuz?',
+      question: {
+        tr: 'Dünya bu maçı konuşacak. Yorumunuz?',
+        en: 'The world will be talking about this. Your thoughts?',
+      },
       options: [
-        { text: '"Gurur verici. Layık olduğumuzu gösterdik."', effect: { teamMorale: 2, boardConfidence: 1 } },
-        { text: '"Odak bir sonraki maçta olmalı."', effect: { pressRelation: 1 } },
-        { text: '"Bu sadece bir adım. Daha fazlası gelecek."', effect: { pressRelation: 1, boardConfidence: 1 } },
+        { text: { tr: '"Gurur verici. Layık olduğumuzu gösterdik."', en: '"Incredibly proud. We showed we deserve to be here."' }, effect: { teamMorale: 2, boardConfidence: 1 } },
+        { text: { tr: '"Odak bir sonraki maçta olmalı."', en: '"The focus has to shift to the next match."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Bu sadece bir adım. Daha fazlası gelecek."', en: '"This is just one step. There\'s more to come."' }, effect: { pressRelation: 1, boardConfidence: 1 } },
       ],
     },
     {
-      question: 'Tarihî bir galibiyet mi bu?',
+      question: {
+        tr: 'Tarihî bir galibiyet mi bu?',
+        en: 'Is this a historic victory?',
+      },
       options: [
-        { text: '"Tarih yazıyoruz, evet!"', effect: { teamMorale: 2, pressRelation: 1, boardConfidence: 2 } },
-        { text: '"Güzel bir an ama kazanmaya devam."', effect: { pressRelation: 1 } },
-        { text: '"Bu takım çok şey başarabilir."', effect: { pressRelation: 1, teamMorale: 1 } },
+        { text: { tr: '"Tarih yazıyoruz, evet!"', en: '"We\'re making history — yes!"' }, effect: { teamMorale: 2, pressRelation: 1, boardConfidence: 2 } },
+        { text: { tr: '"Güzel bir an ama kazanmaya devam."', en: '"A great moment, but we keep winning."' }, effect: { pressRelation: 1 } },
+        { text: { tr: '"Bu takım çok şey başarabilir."', en: '"This team is capable of great things."' }, effect: { pressRelation: 1, teamMorale: 1 } },
       ],
     },
   ],

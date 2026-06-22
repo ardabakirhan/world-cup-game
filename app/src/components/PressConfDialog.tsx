@@ -6,6 +6,7 @@ import { Modal } from './ui'
 
 export function PressConfDialog() {
   const teamId = useGame((s) => s.teamId)
+  const lang = useGame((s) => s.lang)
   const pc = useGame((s) => s.pendingPressConf)
   const resolvePressConfQuestion = useGame((s) => s.resolvePressConfQuestion)
   const skipPressConf = useGame((s) => s.skipPressConf)
@@ -19,6 +20,8 @@ export function PressConfDialog() {
   const q = pool[qIdx]
   if (!q) return null
 
+  const isTR = lang === 'tr'
+
   // Find the player who actually didn't start (validated at pick time, just resolve name)
   const team = getTeam(teamId)
   const starterSet = new Set(pc.matchStarterIds ?? [])
@@ -27,7 +30,8 @@ export function PressConfDialog() {
     .find((p) => p.stats.overall >= 75 && !starterSet.has(p.id))
   const playerName = benchedStar?.name ?? team.players[0]?.name ?? '?'
 
-  const question = q.question
+  const rawQuestion = isTR ? q.question.tr : q.question.en
+  const question = rawQuestion
     .replace(/\[BENCHED_STAR\]/g, playerName)
     .replace(/\[DROPPED_PLAYER\]/g, playerName)
 
@@ -39,8 +43,8 @@ export function PressConfDialog() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 22 }}>🎤</span>
         <div>
-          <div style={{ fontWeight: 800, fontSize: 14 }}>Basın Toplantısı</div>
-          <div style={{ fontSize: 10, color: 'var(--muted)' }}>Soru {current}/{total}</div>
+          <div style={{ fontWeight: 800, fontSize: 14 }}>{isTR ? 'Basın Toplantısı' : 'Press Conference'}</div>
+          <div style={{ fontSize: 10, color: 'var(--muted)' }}>{isTR ? `Soru ${current}/${total}` : `Question ${current}/${total}`}</div>
         </div>
         <button
           onClick={skipPressConf}
@@ -54,7 +58,7 @@ export function PressConfDialog() {
             padding: '4px 8px',
           }}
         >
-          Geç
+          {isTR ? 'Geç' : 'Skip'}
         </button>
       </div>
 
@@ -94,7 +98,7 @@ export function PressConfDialog() {
             onClick={() => resolvePressConfQuestion(i)}
             style={{ fontSize: 13 }}
           >
-            {opt.text}
+            {isTR ? opt.text.tr : opt.text.en}
           </button>
         ))}
       </div>
