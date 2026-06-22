@@ -750,9 +750,30 @@ export class MatchSim {
       // 10-man sides cover more ground
       const redMult = 1 + 0.15 * (s.redCards ?? 0)
       for (const p of s.starters) {
-        // Out-of-position players fatigue faster
-        const outPosMult = p.position !== p.slotRole ? 1 + (0.3 / TUNING.fatiguePerMin) : 1
-        p.fitness = Math.max(0, p.fitness - base * redMult * outPosMult)
+        // Physical stat modifier: physical 99 → 0.80, physical 50 → 1.00, physical 1 → 1.20
+        const phys = p.stats.physical ?? 50
+        const physMod = 1.0 - ((phys - 50) / 50) * 0.20
+
+        // Position modifier based on detailed slot label (or broad role fallback)
+        const slot = p.slotLabel ?? p.slotRole
+        const posMod = slot === 'GK'                        ? 0.20
+          : slot === 'CB'                                   ? 0.75
+          : slot === 'LB' || slot === 'RB'                 ? 0.95
+          : slot === 'LWB' || slot === 'RWB'               ? 1.05
+          : slot === 'CDM'                                  ? 0.90
+          : slot === 'CM'                                   ? 1.00
+          : slot === 'CAM'                                  ? 0.95
+          : slot === 'LW' || slot === 'RW'                 ? 1.00
+          : slot === 'ST' || slot === 'CF' || slot === 'SS'? 0.85
+          : p.slotRole === 'GK'                            ? 0.20
+          : p.slotRole === 'DF'                            ? 0.80
+          : p.slotRole === 'MF'                            ? 1.00
+          : 0.90  // FW broad fallback
+
+        // Out-of-position players fatigue faster (keep existing behaviour)
+        const outPosMult = p.position !== p.slotRole ? 1.15 : 1.0
+
+        p.fitness = Math.max(0, p.fitness - base * redMult * physMod * posMod * outPosMult)
       }
       if (this.minute % 15 === 0) this.refresh(which)
     }
