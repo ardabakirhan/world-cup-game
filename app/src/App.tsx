@@ -6,6 +6,8 @@ import { teamColor } from './data/teamColors'
 import i18n from './i18n'
 import { TabBar } from './components/TabBar'
 import { EventDialog } from './components/EventDialog'
+import { PostMatchEventDialog } from './components/PostMatchEventDialog'
+import { PressConfDialog } from './components/PressConfDialog'
 import { MainMenu } from './screens/MainMenu'
 import { NewGame } from './screens/NewGame'
 import { TeamSelect } from './screens/TeamSelect'
@@ -71,6 +73,8 @@ function Shell() {
       </div>
       {showTabs && <TabBar />}
       <EventDialog />
+      <PostMatchEventDialog />
+      <PressConfDialog />
     </>
   )
 }

@@ -23,8 +23,12 @@ import type {
   PlayerStates, PrepAction, RegenPlayer, RetiredPlayer, YouthPlayer,
   Round, SaveSlotMeta, TacticSliders, SetPieceOptions, Tactics, TacticPreset, TacticalFamiliarity,
   ScheduledMatch, CompetitionResult,
-  InboxMessage, MatchEvent,
+  InboxMessage, MatchEvent, PostMatchEvent, PressConfState,
 } from '../domain/types'
+import { PLAYER_INTERACTION_POOL } from '../data/playerInteractionPool'
+import type { InteractionTrigger } from '../data/playerInteractionPool'
+import { PRESS_QUESTIONS } from '../data/pressConferencePool'
+import type { PressCategory } from '../data/pressConferencePool'
 import { achievementLevel, expectationLevel, FACILITY_COST, MENTALITY_SLIDER_PRESETS, MENTALITY_TO_NUM } from '../domain/types'
 import { teamAvgOverall } from '../data/teams'
 import { generateCareerCalendar, simulateWindowMatches, getNextUserMatch, getNextMajorTournamentInfo, resolveWC2026Bracket } from '../domain/calendar/calendar.engine'
@@ -32,7 +36,7 @@ import { CAREER_EPOCH, careerDayToDate } from '../domain/calendar/calendar.types
 import { checkFiringAfterCompetition, calcCompetitionGrade } from '../domain/calendar/qualification'
 import { groupStandings } from '../domain/tournament/standings'
 
-const SAVE_VERSION = 7
+const SAVE_VERSION = 8
 
 /** Starting federation budget by team strength (OVR ≈ FIFA ranking proxy). */
 function initialFederationBudget(teamId: string): number {
@@ -183,6 +187,10 @@ interface Actions {
   setTactics: (t: Tactics) => void
   doPrepAction: (a: PrepAction) => void
   resolveEvent: (choiceIndex: number) => void
+  resolvePostMatchEvent: (choiceIndex: number) => void
+  openPressConf: () => void
+  resolvePressConfQuestion: (choiceIndex: number) => void
+  skipPressConf: () => void
   markInboxRead: (id?: string) => void
   clearInbox: () => void
   advanceDay: () => void
@@ -273,6 +281,11 @@ const emptyState = (): GameState => ({
   tournamentSquadLocked: false,
   lockedSquadIds: [],
   activeTournamentId: null,
+  // v9 — relationships & post-match events
+  playerRelationships: {},
+  mustStartNext: [],
+  pendingPostMatchEvents: [],
+  pendingPressConf: null,
 })
 
 const capStorage = createJSONStorage(() => ({
@@ -280,6 +293,102 @@ const capStorage = createJSONStorage(() => ({
   setItem: async (k: string, v: string) => { await Preferences.set({ key: k, value: v }) },
   removeItem: async (k: string) => { await Preferences.remove({ key: k }) },
 }))
+
+/** Build post-match player interaction events after a user match. */
+function buildPostMatchEvents(
+  teamId: string,
+  result: { homeGoals: number; awayGoals: number },
+  isHome: boolean,
+  schedule: ScheduledMatch[],
+  lineup: { starters: (string | null)[] },
+  playerStates: PlayerStates,
+  relationships: Record<string, number>,
+  rng: () => number,
+): PostMatchEvent[] {
+  const userGF = isHome ? result.homeGoals : result.awayGoals
+  const userGA = isHome ? result.awayGoals : result.homeGoals
+  const userWon = userGF > userGA
+  const userLost = userGF < userGA
+
+  const starterIds = new Set(lineup.starters.filter(Boolean) as string[])
+  const team = getTeam(teamId)
+  const players = team.players
+
+  // Recent results for losing streak check
+  const recentUserResults = schedule
+    .filter((m) => m.result && (m.homeId === teamId || m.awayId === teamId))
+    .sort((a, b) => b.day - a.day)
+    .slice(0, 3)
+  const isLosingStreak = recentUserResults.length >= 3 &&
+    recentUserResults.every((m) => {
+      const gh = m.homeId === teamId ? m.result!.homeGoals : m.result!.awayGoals
+      const ga = m.homeId === teamId ? m.result!.awayGoals : m.result!.homeGoals
+      return gh < ga
+    })
+
+  const events: PostMatchEvent[] = []
+
+  const addEv = (trigger: InteractionTrigger, playerId: string) => {
+    const pool = PLAYER_INTERACTION_POOL[trigger]
+    const variantIdx = Math.floor(rng() * pool.length)
+    events.push({ trigger, playerId, variantIdx })
+  }
+
+  // Captain poor match
+  const captain = players.find((p) => starterIds.has(p.id) && (p.caps ?? 0) >= 20)
+  if (captain && userLost) addEv('captainPoorMatch', captain.id)
+
+  // Three-match losing streak
+  if (isLosingStreak) {
+    const capForStreak = players.find((p) => starterIds.has(p.id))
+    if (capForStreak) addEv('threeMatchLosingStreak', capForStreak.id)
+  }
+
+  // Star player good form — check matchRatings
+  if (userWon) {
+    const starInForm = players
+      .filter((p) => starterIds.has(p.id) && p.stats.overall >= 82)
+      .sort((a, b) => b.stats.overall - a.stats.overall)[0]
+    if (starInForm && rng() < 0.40) addEv('starPlayerGoodForm', starInForm.id)
+  }
+
+  // Young player first cap (caps === 0 before this match; approximated by caps === 0)
+  const youngDebut = players.find((p) => starterIds.has(p.id) && (p.caps ?? 0) === 0)
+  if (youngDebut) addEv('youngPlayerFirstCap', youngDebut.id)
+
+  // Benched players reactions (check up to 2 high-rated benched players)
+  const benchedStars = players
+    .filter((p) => !starterIds.has(p.id) && p.stats.overall >= 78 &&
+      (playerStates[p.id]?.injuredUntilDay ?? -1) < 0 &&
+      (playerStates[p.id]?.suspendedMatches ?? 0) === 0)
+    .sort((a, b) => b.stats.overall - a.stats.overall)
+    .slice(0, 2)
+
+  for (const b of benchedStars) {
+    const consecutiveBenched = (relationships[b.id] ?? 50) <= 45 ? 3 : 1
+    const chanceThreshold = userLost ? 0.55 : 0.30
+    if (consecutiveBenched >= 3) {
+      if (events.length < 2) addEv('benchedThreeMatches', b.id)
+    } else if (rng() < chanceThreshold && events.length < 2) {
+      addEv(userWon ? 'benchedAndWon' : 'benchedAndLost', b.id)
+    }
+  }
+
+  // Max 2 events per match
+  return events.slice(0, 2)
+}
+
+/** Pick a random subset of indices for press conference questions. */
+function pickPressQIndices(category: PressCategory, count: number, rng: () => number): number[] {
+  const pool = PRESS_QUESTIONS[category]
+  const indices = pool.map((_, i) => i)
+  // Fisher-Yates shuffle then take first `count`
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]]
+  }
+  return indices.slice(0, Math.min(count, indices.length))
+}
 
 export const useGame = create<Store>()(
   persist(
@@ -795,6 +904,84 @@ export const useGame = create<Store>()(
         })
       },
 
+      resolvePostMatchEvent: (choiceIndex) => {
+        const g = get()
+        const ev = g.pendingPostMatchEvents[0]
+        if (!ev || !g.teamId) return
+        const pool = PLAYER_INTERACTION_POOL[ev.trigger as InteractionTrigger]
+        if (!pool) return
+        const interaction = pool[ev.variantIdx]
+        const eff = interaction.options[choiceIndex]?.effect ?? {}
+        const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v))
+        const states = structuredClone(g.playerStates)
+        const ids = getTeam(g.teamId).players.map((p) => p.id)
+        // Apply morale / teamMorale effects
+        if (eff.morale && states[ev.playerId]) {
+          states[ev.playerId].morale = clamp(states[ev.playerId].morale + eff.morale, 1, 10)
+        }
+        if (eff.teamMorale) {
+          applyPrepEffect(states, ids, { teamMorale: eff.teamMorale })
+        }
+        // Update relationship
+        const relationships = { ...g.playerRelationships }
+        const prev = relationships[ev.playerId] ?? 50
+        relationships[ev.playerId] = clamp(prev + (eff.relationship ?? 0) * 5, 0, 100)
+        // mustStartNext
+        const mustStartNext = eff.mustStartNext
+          ? [...new Set([...g.mustStartNext, ev.playerId])]
+          : g.mustStartNext
+        set({
+          playerStates: states,
+          playerRelationships: relationships,
+          mustStartNext,
+          pendingPostMatchEvents: g.pendingPostMatchEvents.slice(1),
+        })
+      },
+
+      openPressConf: () => {
+        // pendingPressConf is already set by commitUserMatch — just expose it
+        // (no-op if already set; called when user taps the press conf button)
+      },
+
+      resolvePressConfQuestion: (choiceIndex) => {
+        const g = get()
+        const pc = g.pendingPressConf
+        if (!pc) return
+        const pool = PRESS_QUESTIONS[pc.category as PressCategory]
+        const qIdx = pc.questionIndices[pc.currentQ]
+        const q = pool[qIdx]
+        if (!q) return
+        const eff = q.options[choiceIndex]?.effect ?? {}
+        const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v))
+        const accumulated = {
+          pressRelation: pc.effects.pressRelation + (eff.pressRelation ?? 0),
+          teamMorale: pc.effects.teamMorale + (eff.teamMorale ?? 0),
+          boardConfidence: pc.effects.boardConfidence + (eff.boardConfidence ?? 0),
+        }
+        const isLast = pc.currentQ >= pc.questionIndices.length - 1
+        if (isLast) {
+          // Apply all accumulated effects
+          const newPressRelation = clamp(g.pressRelation + accumulated.pressRelation, -5, 5)
+          const states = g.teamId ? structuredClone(g.playerStates) : g.playerStates
+          if (g.teamId && accumulated.teamMorale !== 0) {
+            applyPrepEffect(states, getTeam(g.teamId).players.map((p) => p.id), {
+              teamMorale: accumulated.teamMorale,
+            })
+          }
+          set({
+            pressRelation: newPressRelation,
+            playerStates: states,
+            pendingPressConf: null,
+          })
+        } else {
+          set({
+            pendingPressConf: { ...pc, currentQ: pc.currentQ + 1, effects: accumulated },
+          })
+        }
+      },
+
+      skipPressConf: () => set({ pendingPressConf: null }),
+
       markInboxRead: (id) => {
         const inbox = (get().inbox ?? []).map((m) => (!id || m.id === id ? { ...m, read: true } : m))
         set({ inbox })
@@ -847,7 +1034,7 @@ export const useGame = create<Store>()(
 
         const day = g.day + 1
         const phase = day > 18 ? 'finished' : dayPhase(day)
-        set({ day, phase, prepActionUsed: false, pendingEvent: null })
+        set({ day, phase, prepActionUsed: false, pendingEvent: null, pendingPostMatchEvents: [], pendingPressConf: null })
         if (phase === 'prep') get().maybeRollEvent()
         // auto-save after each day advance
         void get().saveToSlot(get().activeSlot)
@@ -957,6 +1144,7 @@ export const useGame = create<Store>()(
           isUser: true, lineup: g.lineup, tactics: g.tactics, oppId,
           familiarityScore: g.tacticalFamiliarity.score,
           regenPool: g.regenPool,
+          playerRelationships: g.playerRelationships,
         })
         userSide.bonus = { att: baseBonus.att + diffMod, def: baseBonus.def + diffMod }
         const oppSide = buildSide(oppId, states, g.day, { isUser: false, oppId: g.teamId })
@@ -1061,6 +1249,36 @@ export const useGame = create<Store>()(
             if (!userInR32) set({ eliminated: true, eliminatedRound: 'G3' })
           }
         }
+
+        // Build post-match player interaction events
+        const matchRng = makeRng((g.careerSeed ^ hashStr(fixtureId) ^ 0xBEEF) >>> 0)
+        const isHomeTeam = targetMatch.homeId === g.teamId
+        const postMatchEvs = buildPostMatchEvents(
+          g.teamId, result, isHomeTeam, resolvedSchedule,
+          g.lineup, states, g.playerRelationships, matchRng,
+        )
+
+        // Determine press conference category
+        const userGF2 = isHomeTeam ? result.homeGoals : result.awayGoals
+        const userGA2 = isHomeTeam ? result.awayGoals : result.homeGoals
+        const goalDiff = userGF2 - userGA2
+        const pressCategory: PressCategory =
+          goalDiff >= 3 ? 'afterBigWin' :
+          goalDiff > 0  ? 'afterWin'    :
+          goalDiff < 0  ? 'afterLoss'   : 'afterDraw'
+        const pressQRng = makeRng((g.careerSeed ^ hashStr(fixtureId) ^ 0xCAFE) >>> 0)
+        const pressQIndices = pickPressQIndices(pressCategory, 3, pressQRng)
+        const pendingPressConf: PressConfState = {
+          category: pressCategory,
+          questionIndices: pressQIndices,
+          currentQ: 0,
+          effects: { pressRelation: 0, teamMorale: 0, boardConfidence: 0 },
+        }
+
+        set({
+          pendingPostMatchEvents: postMatchEvs,
+          pendingPressConf,
+        })
 
         // Update familiarity after match
         get().gainFamiliarityAfterMatch(fixtureId)
@@ -1368,6 +1586,10 @@ export const useGame = create<Store>()(
           tournamentSquadLocked: g.tournamentSquadLocked ?? false,
           lockedSquadIds: g.lockedSquadIds ?? [],
           activeTournamentId: g.activeTournamentId ?? null,
+          playerRelationships: g.playerRelationships ?? {},
+          mustStartNext: g.mustStartNext ?? [],
+          pendingPostMatchEvents: g.pendingPostMatchEvents ?? [],
+          pendingPressConf: g.pendingPressConf ?? null,
         }
         await Preferences.set({ key: `wc26-slot-${n}`, value: JSON.stringify({ state: payload, seed: (get() as Store & { careerSeed: number }).careerSeed }) })
         const meta: SaveSlotMeta = {
@@ -1437,6 +1659,10 @@ export const useGame = create<Store>()(
           tournamentSquadLocked: (s as Partial<GameState>).tournamentSquadLocked ?? false,
           lockedSquadIds: (s as Partial<GameState>).lockedSquadIds ?? [],
           activeTournamentId: (s as Partial<GameState>).activeTournamentId ?? null,
+          playerRelationships: (s as Partial<GameState>).playerRelationships ?? {},
+          mustStartNext: (s as Partial<GameState>).mustStartNext ?? [],
+          pendingPostMatchEvents: (s as Partial<GameState>).pendingPostMatchEvents ?? [],
+          pendingPressConf: (s as Partial<GameState>).pendingPressConf ?? null,
         }
       },
     },

@@ -16,6 +16,7 @@ export interface EnginePlayer {
   form: number
   morale: number
   fitness: number // mutates during the match
+  relationship?: number // 0-100 coach-player relationship, default 50
 }
 
 export interface TeamRatings {
@@ -30,6 +31,7 @@ export function makeEnginePlayer(
   st: PlayerState,
   slotRole: Position,
   slotLabel?: string,
+  relationship?: number,
 ): EnginePlayer {
   return {
     id: p.id, name: p.name, position: p.position, slotRole, slotLabel,
@@ -37,6 +39,7 @@ export function makeEnginePlayer(
     primaryPosition: p.primaryPosition,
     stats: p.stats, gk: p.gkStats,
     form: st.form, morale: st.morale, fitness: st.fitness,
+    relationship,
   }
 }
 
@@ -45,7 +48,8 @@ function stat(p: EnginePlayer, v: number | null): number {
 }
 
 /** Form/morale/fatigue multiplier. Fatigue thresholds: 0-40% no penalty;
- *  41-60% → -4%; 61-75% → -9%; 76-85% → -16%; 86-100% → -24%. */
+ *  41-60% → -4%; 61-75% → -9%; 76-85% → -16%; 86-100% → -24%.
+ *  Relationship: ≥70 → +3 OVR equiv (+0.04); <30 → -5 OVR equiv (-0.067). */
 export function conditionFactor(p: EnginePlayer): number {
   const form = 1 + (p.form - 6) * 0.02
   const morale = 1 + (p.morale - 6) * 0.012
@@ -55,7 +59,9 @@ export function conditionFactor(p: EnginePlayer): number {
     : fatigue <= 75 ? 0.91
     : fatigue <= 85 ? 0.84
     : 0.76
-  return form * morale * fitMult
+  const rel = p.relationship ?? 50
+  const relMult = rel >= 70 ? 1.040 : rel < 30 ? 0.933 : 1.00
+  return form * morale * fitMult * relMult
 }
 
 /** Penalty for playing out of natural position (also used by the UI to show

@@ -111,7 +111,7 @@ export function buildSide(
   teamId: string,
   states: PlayerStates,
   day: number,
-  opts: { isUser: boolean; lineup?: Lineup; tactics?: Tactics; oppId: string; familiarityScore?: number; regenPool?: Record<string, RegenPlayer> },
+  opts: { isUser: boolean; lineup?: Lineup; tactics?: Tactics; oppId: string; familiarityScore?: number; regenPool?: Record<string, RegenPlayer>; playerRelationships?: Record<string, number> },
 ): Side {
   const regenPool = opts.regenPool
   const effectivePlayers = getEffectivePlayers(teamId, states, regenPool)
@@ -154,7 +154,8 @@ export function buildSide(
     const adjustedPlayer: Player = decay > 0
       ? { ...p, stats: { ...p.stats, overall: Math.max(40, p.stats.overall - decay) } }
       : p
-    starters.push(makeEnginePlayer(adjustedPlayer, st, slots[i].role, slots[i].label))
+    const rel = opts.isUser ? (opts.playerRelationships?.[p.id] ?? 50) : undefined
+    starters.push(makeEnginePlayer(adjustedPlayer, st, slots[i].role, slots[i].label, rel))
   })
   const inXI = new Set(ids.filter(Boolean) as string[])
   const bench = effectivePlayers

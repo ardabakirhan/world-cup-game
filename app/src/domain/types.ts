@@ -301,6 +301,21 @@ export interface ActiveEvent {
   playerId?: string // subject, if any
 }
 
+// ── Post-match player interaction events ──────────────────────────────────────
+export interface PostMatchEvent {
+  trigger: string           // InteractionTrigger key
+  playerId: string          // subject player
+  variantIdx: number        // which dialogue from the pool
+}
+
+// ── Post-match press conference ───────────────────────────────────────────────
+export interface PressConfState {
+  category: string          // PressCategory key
+  questionIndices: number[] // 3 randomly-picked indices from pool
+  currentQ: number          // 0..2
+  effects: { pressRelation: number; teamMorale: number; boardConfidence: number }
+}
+
 export interface EventLogEntry {
   day: number
   eventId: string
@@ -404,4 +419,10 @@ export interface GameState {
   tournamentSquadLocked: boolean               // true while a major tournament is in progress
   lockedSquadIds: string[]                     // the 26 IDs locked for the active tournament
   activeTournamentId: string | null            // windowId of the currently locked tournament
+
+  // ── Player relationships & post-match events (v9) ────────────────
+  playerRelationships: Record<string, number>  // playerId → 0-100 (starts 50)
+  mustStartNext: string[]                      // playerIds who must start next match
+  pendingPostMatchEvents: PostMatchEvent[]     // queue of interactions shown after match
+  pendingPressConf: PressConfState | null      // active press conference, if any
 }
