@@ -16,6 +16,21 @@ import { Pitch2D, contrastColor } from '../components/Pitch2D'
 import { teamColor } from '../data/teamColors'
 import { familiarityLabel } from './Tactics'
 
+/** Format a game minute with stoppage-time notation.
+ *  2H minutes > 45 show as "45+X'" (max +5 clamp for display).
+ *  ET minutes > 105 show as "105+X'". */
+function formatMinute(minute: number, phase: string): string {
+  if (phase === '2H' && minute > 45) {
+    const stoppage = Math.min(minute - 45, 5)
+    return `45+${stoppage}'`
+  }
+  if ((phase === 'ET2') && minute > 105) {
+    const stoppage = Math.min(minute - 105, 5)
+    return `105+${stoppage}'`
+  }
+  return `${minute}'`
+}
+
 type Speed = 0 | 1 | 2 | 4 | 99
 
 /** Safe getPlayer — never throws for regen/youth IDs. */
@@ -436,7 +451,7 @@ export function MatchLive() {
               ? t('match.ht')
               : sim.phase === 'BREAK_ET'
                 ? t('match.et')
-                : t('match.min', { n: sim.minute })}
+                : formatMinute(sim.minute, sim.phase)}
         </div>
       </div>
 
@@ -517,7 +532,7 @@ export function MatchLive() {
               <span className="text-[var(--muted)]">→</span>
             </span>
             <span className="text-[var(--muted)] tabular-nums font-bold text-[11px]">
-              {sim.phase === 'HT' ? 'HT' : sim.phase === 'BREAK_ET' ? 'ET' : `${sim.minute}'`}
+              {sim.phase === 'HT' ? 'HT' : sim.phase === 'BREAK_ET' ? 'ET' : formatMinute(sim.minute, sim.phase)}
             </span>
             <span className="flex items-center gap-1.5" style={{ color: awayColor }}>
               <span className="text-[var(--muted)]">←</span>

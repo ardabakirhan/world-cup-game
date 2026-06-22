@@ -32,7 +32,7 @@ import type { PressCategory } from '../data/pressConferencePool'
 import { achievementLevel, expectationLevel, FACILITY_COST, MENTALITY_SLIDER_PRESETS, MENTALITY_TO_NUM } from '../domain/types'
 import { teamAvgOverall } from '../data/teams'
 import { generateCareerCalendar, simulateWindowMatches, getNextUserMatch, getNextMajorTournamentInfo, resolveWC2026Bracket } from '../domain/calendar/calendar.engine'
-import { CAREER_EPOCH, careerDayToDate } from '../domain/calendar/calendar.types'
+import { CAREER_EPOCH, careerDayToDate, dateToCareerDay } from '../domain/calendar/calendar.types'
 import { checkFiringAfterCompetition, calcCompetitionGrade } from '../domain/calendar/qualification'
 import { groupStandings } from '../domain/tournament/standings'
 
@@ -293,6 +293,108 @@ const capStorage = createJSONStorage(() => ({
   setItem: async (k: string, v: string) => { await Preferences.set({ key: k, value: v }) },
   removeItem: async (k: string) => { await Preferences.remove({ key: k }) },
 }))
+
+/** WC_ROUND_DAYS mirrors calendar.engine.ts so career-mode knockout placeholders get the right day. */
+const WC_CAREER_ROUND_DAYS: Record<string, number> = {
+  R16:   dateToCareerDay({ year: 2026, month: 7, day: 5 }),
+  QF:    dateToCareerDay({ year: 2026, month: 7, day: 8 }),
+  SF:    dateToCareerDay({ year: 2026, month: 7, day: 12 }),
+  THIRD: dateToCareerDay({ year: 2026, month: 7, day: 15 }),
+  FINAL: dateToCareerDay({ year: 2026, month: 7, day: 19 }),
+}
+
+/**
+ * After a WC 2026 knockout match has a result, advance the bracket in the career schedule:
+ *  - Find the user's match (via fixtureId), determine winner/loser.
+ *  - Pair this match with its bracket partner (odd/even pairs: 1+2, 3+4, …).
+ *  - If both matches of a pair have results, generate the next-round placeholder.
+ *  - Also generate the THIRD-place match after both SF results are in.
+ * Returns the updated schedule (or the same reference if nothing changed).
+ */
+function advanceWC2026KnockoutSchedule(schedule: ScheduledMatch[]): ScheduledMatch[] {
+  const KO_ROUNDS: string[] = ['R32', 'R16', 'QF', 'SF']
+  const NEXT_ROUND: Record<string, string> = { R32: 'R16', R16: 'QF', QF: 'SF', SF: 'FINAL' }
+  let updated = schedule
+
+  for (const round of KO_ROUNDS) {
+    const roundMatches = updated
+      .filter((m) => m.windowId === 'WC_2026' && m.round === round)
+      .sort((a, b) => {
+        const ai = parseInt(a.id.split('-').pop() ?? '0', 10)
+        const bi = parseInt(b.id.split('-').pop() ?? '0', 10)
+        return ai - bi
+      })
+    if (roundMatches.length === 0) continue
+
+    const nextRound = NEXT_ROUND[round]
+    if (!nextRound) continue
+
+    // Check if we need to build THIRD-place match (after SF)
+    if (round === 'SF') {
+      const bothDone = roundMatches.length >= 2 && roundMatches.every((m) => m.result)
+      const thirdExists = updated.some((m) => m.windowId === 'WC_2026' && m.round === 'THIRD')
+      if (bothDone && !thirdExists) {
+        const loser0 = roundMatches[0].result
+          ? (roundMatches[0].result.homeGoals > roundMatches[0].result.awayGoals
+              ? roundMatches[0].awayId : roundMatches[0].homeId)
+          : null
+        const loser1 = roundMatches[1]?.result
+          ? (roundMatches[1].result.homeGoals > roundMatches[1].result.awayGoals
+              ? roundMatches[1].awayId : roundMatches[1].homeId)
+          : null
+        if (loser0 && loser1) {
+          updated = [...updated, {
+            id: 'WC2026-THIRD-1',
+            round: 'THIRD',
+            day: WC_CAREER_ROUND_DAYS.THIRD,
+            homeId: loser0,
+            awayId: loser1,
+            windowId: 'WC_2026',
+            competition: 'WC_2026',
+            matchType: 'knockout',
+            simulated: false,
+            slotHome: 'SF1L',
+            slotAway: 'SF2L',
+          }]
+        }
+      }
+    }
+
+    // Pair matches: 0+1, 2+3, … → one next-round match per pair
+    for (let i = 0; i + 1 < roundMatches.length; i += 2) {
+      const m0 = roundMatches[i]
+      const m1 = roundMatches[i + 1]
+      if (!m0.result || !m1.result) continue
+
+      const pairIdx = i / 2 + 1
+      const nextId = `WC2026-${nextRound}-${pairIdx}`
+      if (updated.some((m) => m.id === nextId)) continue
+
+      const winner0 = m0.result.homeGoals > m0.result.awayGoals ? m0.homeId
+        : m0.result.awayGoals > m0.result.homeGoals ? m0.awayId
+        : m0.result.pens && m0.result.pens.home > m0.result.pens.away ? m0.homeId : m0.awayId
+      const winner1 = m1.result.homeGoals > m1.result.awayGoals ? m1.homeId
+        : m1.result.awayGoals > m1.result.homeGoals ? m1.awayId
+        : m1.result.pens && m1.result.pens.home > m1.result.pens.away ? m1.homeId : m1.awayId
+
+      updated = [...updated, {
+        id: nextId,
+        round: nextRound,
+        day: WC_CAREER_ROUND_DAYS[nextRound] ?? 0,
+        homeId: winner0,
+        awayId: winner1,
+        windowId: 'WC_2026',
+        competition: 'WC_2026',
+        matchType: 'knockout',
+        simulated: false,
+        slotHome: `W${m0.id}`,
+        slotAway: `W${m1.id}`,
+      }]
+    }
+  }
+
+  return updated
+}
 
 /** Build post-match player interaction events after a user match. */
 function buildPostMatchEvents(
@@ -1225,7 +1327,12 @@ export const useGame = create<Store>()(
         // After a WC 2026 group-stage match, try to fill the R32 bracket.
         // resolveWC2026Bracket is a no-op until all 72 group matches have results.
         const isWCGroup = sm?.windowId === 'WC_2026' && sm?.matchType === 'group'
-        const resolvedSchedule = isWCGroup ? resolveWC2026Bracket(schedule) : schedule
+        const isWCKnockout = sm?.windowId === 'WC_2026' && sm?.matchType === 'knockout'
+        let resolvedSchedule = isWCGroup ? resolveWC2026Bracket(schedule) : schedule
+        // After a WC 2026 knockout match, advance the bracket (generate next-round placeholder).
+        if (isWCKnockout) {
+          resolvedSchedule = advanceWC2026KnockoutSchedule(resolvedSchedule)
+        }
 
         set({
           playerStates: states,
@@ -1236,17 +1343,28 @@ export const useGame = create<Store>()(
           federationBudget: g.federationBudget + budgetGain,
         })
 
-        // Career-mode WC elimination: bracket just filled → check if user advances
-        if (isWCGroup && !g.eliminated && g.teamId) {
-          const bracketFilled = resolvedSchedule.some(
-            (m) => m.windowId === 'WC_2026' && m.round === 'R32' && m.homeId !== null,
-          )
-          if (bracketFilled) {
-            const userInR32 = resolvedSchedule.some(
-              (m) => m.round === 'R32' &&
-                (m.homeId === g.teamId || m.awayId === g.teamId),
+        // Career-mode WC elimination checks
+        if (!g.eliminated && g.teamId) {
+          if (isWCGroup) {
+            const bracketFilled = resolvedSchedule.some(
+              (m) => m.windowId === 'WC_2026' && m.round === 'R32' && m.homeId !== null,
             )
-            if (!userInR32) set({ eliminated: true, eliminatedRound: 'G3' })
+            if (bracketFilled) {
+              const userInR32 = resolvedSchedule.some(
+                (m) => m.round === 'R32' &&
+                  (m.homeId === g.teamId || m.awayId === g.teamId),
+              )
+              if (!userInR32) set({ eliminated: true, eliminatedRound: 'G3' })
+            }
+          }
+          if (isWCKnockout && sm?.result) {
+            // User just played a knockout match — check if they lost
+            const userWonKO = sm.homeId === g.teamId
+              ? (sm.result.homeGoals > sm.result.awayGoals || ((sm.result.pens?.home ?? 0) > (sm.result.pens?.away ?? 0)))
+              : (sm.result.awayGoals > sm.result.homeGoals || ((sm.result.pens?.away ?? 0) > (sm.result.pens?.home ?? 0)))
+            if (!userWonKO) {
+              set({ eliminated: true, eliminatedRound: sm.round as Round })
+            }
           }
         }
 

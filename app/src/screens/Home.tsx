@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getTeam, groupTeams, teamAvgOverall } from '../data/teams'
@@ -152,6 +152,8 @@ export function Home() {
   const isCareerMode = g.schedule.length > 0
   const [prepOpen, setPrepOpen] = useState(false)
   const [inboxOpen, setInboxOpen] = useState(false)
+  const [advToast, setAdvToast] = useState<string | null>(null)
+  const advToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   if (!isCareerMode) return <LegacyHome />
 
@@ -195,12 +197,26 @@ export function Home() {
     return conf
   })()
 
+  const showAdvToast = (msg: string) => {
+    if (advToastTimer.current) clearTimeout(advToastTimer.current)
+    setAdvToast(msg)
+    advToastTimer.current = setTimeout(() => setAdvToast(null), 2200)
+  }
+
   // "Devam Et" action
   const handleDevamEt = () => {
     if (needsSquadLock) return nav('/player-pool')
     if (isMatchToday)    return nav('/lineup')
     if (isMatchThisWeek) return setPrepOpen(true)
-    return g.advanceWeek()
+    const prevDate = formatGameDate(g.currentDate, g.lang)
+    g.advanceWeek()
+    // Show toast after state update — read new date from store
+    setTimeout(() => {
+      const nd = useGame.getState().currentDate
+      const newDateStr = formatGameDate(nd, useGame.getState().lang)
+      showAdvToast(g.lang === 'tr' ? `1 Hafta İlerlendi → ${newDateStr}` : `Week advanced → ${newDateStr}`)
+    }, 0)
+    void prevDate
   }
 
   const devamEtLabel = isMatchToday
@@ -230,8 +246,44 @@ export function Home() {
   return (
     <div
       className="flex flex-col overflow-hidden"
-      style={{ height: '100%', background: 'var(--bg)' }}
+      style={{ height: '100%', background: 'var(--bg)', position: 'relative' }}
     >
+      <style>{`
+        @keyframes toast-pop {
+          from { transform: translate(-50%, -8px); opacity: 0; }
+          to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        @keyframes date-pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; color: var(--accent); }
+        }
+        .date-updated { animation: date-pulse 0.7s ease; }
+      `}</style>
+      {/* ─── Week-advance toast ──────────────────────────────────── */}
+      {advToast && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 56,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 9999,
+            background: 'rgba(15,23,42,0.92)',
+            backdropFilter: 'blur(8px)',
+            color: '#fff',
+            padding: '8px 18px',
+            borderRadius: 9999,
+            fontSize: 12,
+            fontWeight: 700,
+            whiteSpace: 'nowrap',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            animation: 'toast-pop 0.25s cubic-bezier(0.16,1,0.3,1)',
+          }}
+        >
+          ⏩ {advToast}
+        </div>
+      )}
       {/* ─── SECTION 1: Date bar ─────────────────────────────────── */}
       <div
         style={{
@@ -242,7 +294,10 @@ export function Home() {
           padding: '8px 16px',
         }}
       >
-        <div style={{ fontSize: 18, fontWeight: 900, letterSpacing: '-0.02em', fontFamily: 'monospace' }}>
+        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', fontFamily: 'monospace' }}
+          key={`${g.currentDate.year}-${g.currentDate.month}-${g.currentDate.day}`}
+          className={advToast ? 'date-updated' : ''}
+        >
           {formatGameDate(g.currentDate, g.lang)}
         </div>
         <div
@@ -314,18 +369,25 @@ export function Home() {
             style={{ ...colHdr, cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 4 }}
             onClick={() => setInboxOpen(true)}
           >
+            <span style={{ fontSize: 12 }}>📬</span>
             <span>{g.lang === 'tr' ? 'Mesaj Kutusu' : 'Inbox'}</span>
             {unread > 0 && (
               <span
                 className="pulse-dot"
                 style={{
-                  background: 'var(--accent)',
+                  background: 'var(--bad)',
                   color: '#fff',
                   borderRadius: 9999,
+                  minWidth: 16,
+                  height: 16,
                   padding: '0 4px',
-                  fontSize: 8,
+                  fontSize: 9,
                   fontWeight: 900,
                   flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  lineHeight: 1,
                 }}
               >
                 {unread}
@@ -636,6 +698,7 @@ const badgePill: React.CSSProperties = {
 
 const INBOX_ICON: Record<string, string> = {
   board: '🏛️', suspension: '🟥', suspension_over: '✅', injury: '🚑', press: '📰', news: '🌍',
+  retirement: '⭐', youth: '🌟', squad: '📋',
 }
 
 function InboxList(props: {
@@ -664,37 +727,43 @@ function InboxList(props: {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg font-extrabold">📬 {t('home.inboxTitle')}</h2>
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-xl font-black">📬 {t('home.inboxTitle')}</h2>
         {props.messages.length > 0 && (
-          <div className="flex gap-2">
-            <button className="text-xs text-[var(--accent)] font-bold" onClick={props.onReadAll}>{t('home.inboxReadAll')}</button>
-            <button className="text-xs text-[var(--muted)] font-bold" onClick={props.onClear}>{t('home.inboxClear')}</button>
+          <div className="flex gap-3">
+            <button className="text-sm text-[var(--accent)] font-bold" onClick={props.onReadAll}>{t('home.inboxReadAll')}</button>
+            <button className="text-sm text-[var(--muted)] font-bold" onClick={props.onClear}>{t('home.inboxClear')}</button>
           </div>
         )}
       </div>
       {sorted.length === 0 ? (
-        <p className="text-sm text-[var(--muted)] text-center py-6">{t('home.inboxEmpty')}</p>
+        <p className="text-base text-[var(--muted)] text-center py-8">{t('home.inboxEmpty')}</p>
       ) : (
-        <div className="flex flex-col max-h-[60dvh] overflow-y-auto">
+        <div className="flex flex-col" style={{ minHeight: '60dvh', maxHeight: '72dvh', overflowY: 'auto' }}>
           {sorted.map((m) => {
             const { title, body } = resolve(m)
             const isExpanded = expandedId === m.id
             return (
               <button
                 key={m.id}
-                className="flex items-start gap-2 border-b border-[var(--line)] last:border-0 py-2.5 text-left row-tap"
+                className="flex items-start gap-3 border-b border-[var(--line)] last:border-0 text-left row-tap"
+                style={{ minHeight: 56, padding: '10px 4px' }}
                 onClick={() => handleTap(m.id)}
               >
-                <span className="text-base mt-0.5 shrink-0">{INBOX_ICON[m.kind] ?? '✉️'}</span>
+                <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{INBOX_ICON[m.kind] ?? '✉️'}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    {!m.read && <span className="h-2 w-2 rounded-full shrink-0" style={{ background: 'var(--accent)' }} />}
-                    <span className={`text-sm truncate ${m.read ? 'font-semibold text-[var(--muted)]' : 'font-extrabold'}`}>{title}</span>
+                    {!m.read && (
+                      <span
+                        className="pulse-dot shrink-0"
+                        style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--bad)', display: 'inline-block' }}
+                      />
+                    )}
+                    <span className={`leading-tight ${m.read ? 'text-sm font-semibold text-[var(--muted)]' : 'text-base font-extrabold'}`} style={{ wordBreak: 'break-word' }}>{title}</span>
                   </div>
-                  <div className="text-[10px] text-[var(--muted)] mt-0.5">{fmtInboxDate(m.day)}</div>
+                  <div className="text-xs text-[var(--muted)] mt-0.5">{fmtInboxDate(m.day)}</div>
                   {isExpanded && (
-                    <div className="text-xs mt-1 leading-relaxed" style={{ color: 'var(--text)' }}>{body}</div>
+                    <div className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text)' }}>{body}</div>
                   )}
                 </div>
               </button>
