@@ -314,6 +314,7 @@ export interface PressConfState {
   questionIndices: number[] // 3 randomly-picked indices from pool
   currentQ: number          // 0..2
   effects: { pressRelation: number; teamMorale: number; boardConfidence: number }
+  matchStarterIds?: string[]  // player IDs who actually started the match
 }
 
 export interface EventLogEntry {

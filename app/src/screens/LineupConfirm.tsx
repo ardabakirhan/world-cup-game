@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Player } from '../data/types'
 import { getTeam } from '../data/teams'
@@ -72,14 +72,29 @@ export function LineupConfirm() {
     : null
   const oppTeam = oppId ? getTeam(oppId) : null
 
+  const slots = FORMATIONS[g.lineup.formation]
+  const byId = useMemo(() => new Map(team.players.map((p) => [p.id, p])), [team])
+  const roles = g.lineup.roles ?? Array(slots.length).fill(null)
+
   const [pickSlot, setPickSlot] = useState<number | null>(null)
   const [showFormPicker, setShowFormPicker] = useState(false)
   const [showMentalPicker, setShowMentalPicker] = useState(false)
   const [backLine, setBackLine] = useState(g.lineup.formation[0])
+  const [autoRemovedNames, setAutoRemovedNames] = useState<string[]>([])
 
-  const slots = FORMATIONS[g.lineup.formation]
-  const byId = useMemo(() => new Map(team.players.map((p) => [p.id, p])), [team])
-  const roles = g.lineup.roles ?? Array(slots.length).fill(null)
+  // On mount: auto-remove injured/suspended players from starting XI
+  useEffect(() => {
+    const removed: string[] = []
+    g.lineup.starters.forEach((id, slotIdx) => {
+      if (!id) return
+      const p = byId.get(id)
+      if (!p || isAvailable(p, g.playerStates, g.day)) return
+      g.setStarter(slotIdx, null)
+      removed.push(surname(p.name))
+    })
+    if (removed.length > 0) setAutoRemovedNames(removed)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const toChip = (p: Player, slotIdx: number | null): ChipData => {
     const st = g.playerStates[p.id]
@@ -279,6 +294,23 @@ export function LineupConfirm() {
             </div>
           </div>
         </div>
+
+        {/* Auto-removal banner */}
+        {autoRemovedNames.length > 0 && (
+          <div
+            className="rounded-xl border border-[var(--bad)] px-3 py-2.5 flex flex-col gap-1"
+            style={{ background: 'rgba(239,68,68,0.08)' }}
+          >
+            {autoRemovedNames.map((name, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-sm shrink-0">⚠️</span>
+                <span className="text-xs font-semibold leading-tight" style={{ color: 'var(--bad)' }}>
+                  {isTR ? `${name} sakat/cezalı — ilk 11'den çıkarıldı` : `${name} unavailable — removed from XI`}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Warnings */}
         {warnings.length > 0 && (

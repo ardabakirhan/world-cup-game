@@ -19,12 +19,14 @@ export function PressConfDialog() {
   const q = pool[qIdx]
   if (!q) return null
 
-  // Replace placeholder [BENCHED_STAR] / [DROPPED_PLAYER] with a benched star's name
+  // Find the player who actually didn't start (validated at pick time, just resolve name)
   const team = getTeam(teamId)
+  const starterSet = new Set(pc.matchStarterIds ?? [])
   const benchedStar = [...team.players]
     .sort((a, b) => b.stats.overall - a.stats.overall)
-    .find((p) => p.stats.overall >= 78)
+    .find((p) => p.stats.overall >= 75 && !starterSet.has(p.id))
   const playerName = benchedStar?.name ?? team.players[0]?.name ?? '?'
+
   const question = q.question
     .replace(/\[BENCHED_STAR\]/g, playerName)
     .replace(/\[DROPPED_PLAYER\]/g, playerName)

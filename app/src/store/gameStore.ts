@@ -480,16 +480,26 @@ function buildPostMatchEvents(
   return events.slice(0, 2)
 }
 
-/** Pick a random subset of indices for press conference questions. */
-function pickPressQIndices(category: PressCategory, count: number, rng: () => number): number[] {
+const BENCHED_STAR_RE = /\[BENCHED_STAR\]|\[DROPPED_PLAYER\]/
+
+/** Pick a random subset of indices for press conference questions.
+ *  If `hasBenchedStar` is false, questions with [BENCHED_STAR] placeholder are excluded. */
+function pickPressQIndices(
+  category: PressCategory,
+  count: number,
+  rng: () => number,
+  hasBenchedStar: boolean,
+): number[] {
   const pool = PRESS_QUESTIONS[category]
-  const indices = pool.map((_, i) => i)
-  // Fisher-Yates shuffle then take first `count`
-  for (let i = indices.length - 1; i > 0; i--) {
+  const eligible = pool
+    .map((q, i) => ({ q, i }))
+    .filter(({ q }) => hasBenchedStar || !BENCHED_STAR_RE.test(q.question))
+  // Fisher-Yates shuffle of eligible indices
+  for (let i = eligible.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
-    [indices[i], indices[j]] = [indices[j], indices[i]]
+    [eligible[i], eligible[j]] = [eligible[j], eligible[i]]
   }
-  return indices.slice(0, Math.min(count, indices.length))
+  return eligible.slice(0, Math.min(count, eligible.length)).map(({ i }) => i)
 }
 
 export const useGame = create<Store>()(
@@ -671,7 +681,7 @@ export const useGame = create<Store>()(
         }
 
         // Simulate world matches in the current window up to the end of this week
-        const { updatedSchedule, worldNews } = simulateWindowMatches(
+        let { updatedSchedule, worldNews } = simulateWindowMatches(
           g.currentWindowId,
           g.teamId,
           g.schedule,
@@ -679,6 +689,22 @@ export const useGame = create<Store>()(
           (g as typeof g & { careerSeed: number }).careerSeed,
           newDay,
         )
+
+        // If the next user match is in a different window, also simulate that window
+        const nextUserMatch = getNextUserMatch(updatedSchedule, g.teamId, g.day)
+        const nextWindowId = nextUserMatch?.windowId
+        if (nextWindowId && nextWindowId !== g.currentWindowId && nextUserMatch.day <= newDay) {
+          const { updatedSchedule: s2, worldNews: n2 } = simulateWindowMatches(
+            nextWindowId, g.teamId, updatedSchedule, g.playerStates,
+            (g as typeof g & { careerSeed: number }).careerSeed, newDay,
+          )
+          updatedSchedule = s2
+          if (n2.length > 0) worldNews = [...worldNews, ...n2].slice(0, 5)
+        }
+
+        // Update currentWindowId if the next user match is in a different window
+        const nextMatchAfterAdvance = getNextUserMatch(updatedSchedule, g.teamId, newDay)
+        const newWindowId = nextMatchAfterAdvance?.windowId ?? g.currentWindowId
 
         // ~3 rest-day recovery passes for a week (7 days / 2 days per pass)
         const states = structuredClone(g.playerStates)
@@ -689,6 +715,7 @@ export const useGame = create<Store>()(
           playerStates: states,
           day: newDay,
           currentDate: newDate,
+          currentWindowId: newWindowId,
           prepActionUsed: false,
           worldNews: worldNews.length > 0 ? worldNews : g.worldNews,
         })
@@ -1385,12 +1412,18 @@ export const useGame = create<Store>()(
           goalDiff > 0  ? 'afterWin'    :
           goalDiff < 0  ? 'afterLoss'   : 'afterDraw'
         const pressQRng = makeRng((g.careerSeed ^ hashStr(fixtureId) ^ 0xCAFE) >>> 0)
-        const pressQIndices = pickPressQIndices(pressCategory, 3, pressQRng)
+        const userSide = isHomeTeam ? sim.home : sim.away
+        const matchStarterIds = userSide.starters.map((p) => p.id)
+        const starterSet = new Set(matchStarterIds)
+        const team = getTeam(g.teamId)
+        const hasBenchedStar = team.players.some((p) => p.stats.overall >= 75 && !starterSet.has(p.id))
+        const pressQIndices = pickPressQIndices(pressCategory, 3, pressQRng, hasBenchedStar)
         const pendingPressConf: PressConfState = {
           category: pressCategory,
           questionIndices: pressQIndices,
           currentQ: 0,
           effects: { pressRelation: 0, teamMorale: 0, boardConfidence: 0 },
+          matchStarterIds,
         }
 
         set({
