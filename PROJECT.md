@@ -1,6 +1,6 @@
 # World Cup Manager — Project Handoff Document
 
-*Last updated: June 12, 2026 (fictional calendar). Document generation: Claude Sonnet 4.6.*
+*Last updated: June 12, 2026 (fictional calendar). Document generation: project maintainers.*
 
 ---
 
@@ -106,7 +106,7 @@ world_cup_game/
         │   ├── teams.ts            ← TEAMS array loader, getTeam(), teamAvgOverall()
         │   ├── types.ts            ← Team, Player, PlayerStats, GkStats, TournamentRef
         │   ├── tournaments.ts      ← Tournament metadata (IDs, names)
-        │   ├── nationalities.ts    ← ISO → country name map (for coach creator)
+        │   ├── nationalities.ts    ← ISO → country name map (for coach/avatar generation)
         │   └── teamColors.ts       ← Primary colors per team (for UI accents)
         ├── components/
         │   ├── Avatar.tsx          ← <Avatar params={...} size={n} /> React component
@@ -742,4 +742,4 @@ This should feel like **Football Manager but for national teams, mobile-first, t
 - Work in `app/src/` only (never edit `teams.json` by hand for data changes)
 - After any significant change: `npx tsc --noEmit && npx vite build`
 - After calendar changes: also run the validate_schedule script or check BVI/Nigeria/Italy/NZL/Bolivia schedules manually
-- The todo list in Claude's session will be stale — use this document instead
+- The todo list in the current session will be stale — use this document instead
